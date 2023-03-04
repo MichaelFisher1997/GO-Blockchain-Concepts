@@ -1,6 +1,9 @@
 package BlockStructs
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+)
 
 func PrintBlock(block *Block) {
 	fmt.Println("-------------------------------")
@@ -30,4 +33,14 @@ func PrintBlock(block *Block) {
 		}
 		*/
 	}
+}
+
+func BlockJSON(b *Block) string {
+	// Convert the block to a JSON string
+	blockJSON, err := json.MarshalIndent(b, "", "  ")
+	if err != nil {
+		return ""
+	}
+
+	return string(blockJSON)
 }
