@@ -1,0 +1,4 @@
+MerkelRoot and PrevBlockHash functions are done, but the PrevBlockHash is not changing in new blocks.
+write a function to write the contents of a block to a file.
+write a function to read the contents of a block from a file.
+try and validate blocks.
