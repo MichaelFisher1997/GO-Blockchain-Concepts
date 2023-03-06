@@ -27,4 +27,8 @@ not only diving the bandwith so reducing the nodes bandwith useage, but also add
 
 Ledger:
 Lets so the whole world started using this, the ledger size would be massive right? well you chould shard the network based on sub-catagories,
-moveies, genres and such, so a node would only hold the data for specific sub set,  
+moveies, genres and such, so a node would only hold the data for specific sub set.
+
+think about it, split the ditributed computing into something siimular to kubanaties, music streaming service will have a larger use base, so more fees being accumalated,
+and also more pods in the pool, but each pods/node will get a smaller percent when the fees are shard.
+something like a FPS shooting game servers, might have less users, so less fees, but also less pods, so each pod/node will get a larger percent of the toal fees when a block is provided.
