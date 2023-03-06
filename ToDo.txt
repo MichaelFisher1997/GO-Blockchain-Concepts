@@ -2,3 +2,29 @@ MerkelRoot and PrevBlockHash functions are done, but the PrevBlockHash is not ch
 write a function to write the contents of a block to a file.
 write a function to read the contents of a block from a file.
 try and validate blocks.
+
+
+notes:
+currencies?
+
+
+nodes and mining?
+node produce new blocks aswell as validating the blockchain, the node are ran attached to a service such as,
+a gaming server, music streaming, media streaming.
+
+blend blockchain with kubanaties, you run your node with a server, this is actually a massive kubanaties cluster, 
+so its a pod, these are "pooled" to provide a singe server for people to use, meaning if one goes down it dose not distrupt the service.
+The blockchain will auto pick a server (pooled node, maybe taged on the ledger, more users increase likley hood of being selected),
+randomly to produce new blocks, the node in that pool will have to create a block with the previous blockHash, timestamp,
+then grab all broadcasted pending transactions, quick sorts by largest fees, fills block data size with transations optomized for 
+highest fee (1st validating the transaction so its legit), braodcast that new block to the network, then to prove its a legit actor,
+the network will ask for proof of history, so then validate the nodes copy of the ledger, if valid, block added to the blockchain,
+then the fees are then shared by the nodes in the pool.
+
+IPFS:
+so, the user, for example buy a CD key for Full metal jacket on the blockchain, he can then acsess a media streaming server which he can veiw what he owns based on the CD keys assigned to his wallet, then when he goes to stream the mdeia, it fines multiple IFPS nodes that hoes that media and streams form them,
+not only diving the bandwith so reducing the nodes bandwith useage, but also add redundency.
+
+Ledger:
+Lets so the whole world started using this, the ledger size would be massive right? well you chould shard the network based on sub-catagories,
+moveies, genres and such, so a node would only hold the data for specific sub set,  
