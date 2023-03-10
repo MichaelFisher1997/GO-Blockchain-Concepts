@@ -1,0 +1,32 @@
+_____________________________
+BlockID: 0
+Version: 1
+HashMerkleRoot: 0000000000000000000000000000000000000000000000000000000000000000
+PrevBlockHash: 0000000000000000000000000000000000000000000000000000000000000000
+MagicNo: 0xD9B4BEF9
+Transaction Count: 1
+Time Stamp: Friday, 10-Mar-23 08:51:01 GMT
+_____________________________
+BlockID: 1
+Version: 1
+HashMerkleRoot: 151e71b28b53b73d796db40ca42a926d84865a38ecc689d6a5d0acc201cedca5
+PrevBlockHash: 8474654a875e38d4b86ab369e7ab27369fed52e2e1f548d436ea36a505e879e8
+MagicNo: 0xF9S834SK
+Transaction Count: 1
+Time Stamp: Friday, 10-Mar-23 08:51:01 GMT
+_____________________________
+BlockID: 2
+Version: 1
+HashMerkleRoot: 209780516c9049dbf3e51da8aa30287cf555fd4b3abff1e7a905661554563675
+PrevBlockHash: 0c87d471144a5c4b9ca3ea7eeb315d945beec1df355e181910567e28789f1ca7
+MagicNo: 0xF9S834SK
+Transaction Count: 1
+Time Stamp: Friday, 10-Mar-23 08:51:01 GMT
+_____________________________
+BlockID: 3
+Version: 1
+HashMerkleRoot: 642111204195bcb1ce9a7d9a29dd26100de6c8ebe4cf390107b318b8f36db204
+PrevBlockHash: 6f032be9e76dd8914a5d0dbbee02d8abb6db641cc9ebb5783f5de77e555fcbe4
+MagicNo: 0xF9S834SK
+Transaction Count: 1
+Time Stamp: Friday, 10-Mar-23 08:51:01 GMT

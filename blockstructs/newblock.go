@@ -3,16 +3,22 @@ package BlockStructs
 import (
 	"crypto/sha256"
 	"encoding/hex"
+	"encoding/json"
 	"fmt"
+	Utils "go-blockchain/utils"
 )
 
-func (b *Blockchain) NewBlock() *Block {
+func (b *Blockchain) NewBlock() {
+	b.BlockCount = b.BlockCount+1
+	PrevBlockHash :=  ""
+
 	block := &Block{
 		Magic_No: "0xF9S834SK",
+		BlockID: b.BlockCount,
 		Blocksize: 80,
 		BlockHeader: BlockHeader{
 			Version:        1,
-			hashPrevBlock:  b.PrevBlockHash(),
+			hashPrevBlock:  PrevBlockHash,
 			hashMerkleRoot: b.MerkelRoot(),
 			TimeStamp:      TimeStamp(),
 		},
@@ -20,13 +26,16 @@ func (b *Blockchain) NewBlock() *Block {
 		Transactions:        []Transaction{},
 	}
 	blockHash := block.BlockHash()
-	fmt.Println("New Block Hash: ", blockHash)
-	return block
+	block.ThisBlockHash = blockHash
+	new, err := json.MarshalIndent(block, "", " ")
+	Utils.Check(err)
+	b.Blocks = append(b.Blocks, string(new))
 }
 
-func NewGenesisBlock() *Block {
+func (b *Blockchain) NewGenesisBlock() string{
 	block := &Block{
 		Magic_No: "0xD9B4BEF9",
+		BlockID: 0,
 		Blocksize: 80,
 		BlockHeader: BlockHeader{
 			Version:        1, //You upgrade the software and it specifies a new version
@@ -38,8 +47,11 @@ func NewGenesisBlock() *Block {
 		Transactions:        []Transaction{},
 	}
 	blockHash := block.BlockHash()
-	fmt.Println("Genesis Block Hash: ", blockHash)
-	return block
+	block.ThisBlockHash = blockHash
+	new, err := json.MarshalIndent(block, "", " ")
+	Utils.Check(err)
+	//b.Blocks = append(b.Blocks, string(new))
+	return string(new)
 }
 
 
@@ -53,8 +65,8 @@ func (b *Block) BlockHash() string {
 
 func NewBlockchain() *Blockchain {
 	blockchain := &Blockchain{}
-	genesisBlock := NewGenesisBlock()
-	blockchain.Blocks = []*Block{genesisBlock}
+	genesisBlock := blockchain.NewGenesisBlock()
+	blockchain.Blocks = append(blockchain.Blocks, string(genesisBlock))
 	return blockchain
 }
 

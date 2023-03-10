@@ -1,0 +1,7 @@
+{
+ "Blocks": [
+  "{\n \"BlockID\": 0,\n \"ThisBlockHash\": \"93e43721e5257b39668ae975c5792df173f357503c592fcf3f6d1f6166884bbc\",\n \"Magic_No\": \"0xD9B4BEF9\",\n \"Blocksize\": 80,\n \"BlockHeader\": {\n  \"Version\": 1,\n  \"TimeStamp\": \"Friday, 10-Mar-23 09:28:01 GMT\"\n },\n \"Transaction_counter\": 1,\n \"Transactions\": []\n}",
+  "{\n \"BlockID\": 1,\n \"ThisBlockHash\": \"92574ca6ac013d76e7f3d925a6ca8012a9d486a10f3266c383bf34deaceeb913\",\n \"Magic_No\": \"0xF9S834SK\",\n \"Blocksize\": 80,\n \"BlockHeader\": {\n  \"Version\": 1,\n  \"TimeStamp\": \"Friday, 10-Mar-23 09:28:01 GMT\"\n },\n \"Transaction_counter\": 1,\n \"Transactions\": []\n}"
+ ],
+ "BlockCount": 1
+}

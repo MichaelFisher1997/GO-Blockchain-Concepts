@@ -9,7 +9,8 @@ type Transaction struct {
 }
 
 type Blockchain struct {
-	Blocks []*Block
+	Blocks []string//[]*Block test
+	BlockCount int
 	//Root  hash //Merkel root
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
@@ -22,6 +23,8 @@ type BlockHeader struct {
 }
 
 type Block struct {
+	BlockID				int // block number
+	ThisBlockHash 			string //
 	Magic_No            string     //value always 0xD9B4BEF9, 4 bytes
 	Blocksize           int     //number of bytes following up to end of block, 4 bytes
 	BlockHeader         BlockHeader     //consists of 6 items, 	80 bytes

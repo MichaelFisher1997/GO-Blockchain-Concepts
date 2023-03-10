@@ -1,8 +1,10 @@
 package BlockStructs
 
 import (
-	"encoding/json"
 	"fmt"
+	//Utils "go-blockchain/utils"
+	//"os"
+	//"strconv"
 )
 
 func PrintBlock(block *Block) {
@@ -34,13 +36,38 @@ func PrintBlock(block *Block) {
 		*/
 	}
 }
+/* testing!!!
+func BlockPrint(b *Blockchain) {
+	f, err := os.Create("./ledger/data.txt")
+	Utils.Check(err)
+	defer f.Close()
+	blocks := b.Blocks
+	for _, blocks := range b.Blocks {
+		spacer := "_____________________________"
+		blockID := blocks.BlockID
+		headerVersion := blocks.BlockHeader.Version
+		hashMerkleRoot := blocks.BlockHeader.hashMerkleRoot
+		hashPrevBlock := blocks.BlockHeader.hashPrevBlock
+		MagicNo := blocks.Magic_No
+		TransactionCount := blocks.Transaction_counter
+		TimeStamp := blocks.BlockHeader.TimeStamp
 
-func BlockJSON(b *Block) string {
-	// Convert the block to a JSON string
-	blockJSON, err := json.MarshalIndent(b, "", "  ")
-	if err != nil {
-		return ""
+		_, err2 := f.WriteString(string(spacer)+"\n")
+		Utils.Check(err2)
+		_, err3 := f.WriteString("BlockID: " + strconv.Itoa(blockID)+"\n")
+		Utils.Check(err3)
+		_, err4 := f.WriteString("Version: " + strconv.Itoa(headerVersion)+"\n")
+		Utils.Check(err4)
+		_, err5 := f.WriteString("HashMerkleRoot: " + string(hashMerkleRoot)+"\n")
+		Utils.Check(err5)
+		_, err6 := f.WriteString("PrevBlockHash: " + hashPrevBlock+"\n")
+		Utils.Check(err6)
+		_, err7 := f.WriteString("MagicNo: " + MagicNo+"\n")
+		Utils.Check(err7)
+		_, err8 := f.WriteString("Transaction Count: " + strconv.Itoa(TransactionCount)+"\n")
+		Utils.Check(err8)
+		_, err9 := f.WriteString("Time Stamp: " + TimeStamp+"\n")
+		Utils.Check(err9)
 	}
-
-	return string(blockJSON)
-}
+	fmt.Printf("blocks: %v\n", blocks)
+}*/
