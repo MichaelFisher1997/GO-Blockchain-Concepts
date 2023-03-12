@@ -12,7 +12,7 @@ type MyStruct struct {
 
 func SaveToFile(filename string, b *blockstructs.Blockchain) error {
     // Convert the struct to a JSON string
-    jsonString, err := json.MarshalIndent(b,""," ")
+    jsonString, err := json.MarshalIndent(b,"", " ")
     if err != nil {
         return err
     }

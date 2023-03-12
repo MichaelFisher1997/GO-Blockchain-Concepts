@@ -13,6 +13,8 @@ func main() {
 
 	blockchain := BlockStructs.NewBlockchain()
 	blockchain.NewBlock()
+	blockchain.NewBlock()
+	fmt.Print(blockchain.Blocks[0].BlockHash(), "\n")
 	//blockchain.Blocks = append(blockchain.Blocks, json.MarshalIndent(blockchain.NewBlock(), "", "  "))
 	//blockchain.Blocks = append(blockchain.Blocks, blockchain.NewBlock())
 	//blockchain.Blocks = append(blockchain.Blocks, blockchain.NewBlock())

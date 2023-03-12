@@ -13,12 +13,11 @@ func PrintBlock(block *Block) {
 	fmt.Printf("  Magic Number: %s\n", block.Magic_No)
 	fmt.Printf("  Block Size: %d bytes\n", block.Blocksize)
 
-	header := block.BlockHeader
 	fmt.Println("  Block Header:")
-	fmt.Printf("    Version: %d\n", header.Version)
-	fmt.Printf("    Previous Block Hash: %s\n", header.hashPrevBlock)
-	fmt.Printf("    Merkle Root Hash: %s\n", header.hashMerkleRoot)
-	fmt.Printf("    Timestamp: %s\n", header.TimeStamp)
+	fmt.Printf("    Version: %d\n", block.Version)
+	fmt.Printf("    Previous Block Hash: %s\n", block.HashPrevBlock)
+	fmt.Printf("    Merkle Root Hash: %s\n", block.HashMerkleRoot)
+	fmt.Printf("    Timestamp: %s\n", block.TimeStamp)
 
 	fmt.Printf("  Transaction Counter: %d\n", block.Transaction_counter)
 

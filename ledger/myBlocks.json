@@ -1,7 +1,38 @@
 {
  "Blocks": [
-  "{\n \"BlockID\": 0,\n \"ThisBlockHash\": \"93e43721e5257b39668ae975c5792df173f357503c592fcf3f6d1f6166884bbc\",\n \"Magic_No\": \"0xD9B4BEF9\",\n \"Blocksize\": 80,\n \"BlockHeader\": {\n  \"Version\": 1,\n  \"TimeStamp\": \"Friday, 10-Mar-23 09:28:01 GMT\"\n },\n \"Transaction_counter\": 1,\n \"Transactions\": []\n}",
-  "{\n \"BlockID\": 1,\n \"ThisBlockHash\": \"92574ca6ac013d76e7f3d925a6ca8012a9d486a10f3266c383bf34deaceeb913\",\n \"Magic_No\": \"0xF9S834SK\",\n \"Blocksize\": 80,\n \"BlockHeader\": {\n  \"Version\": 1,\n  \"TimeStamp\": \"Friday, 10-Mar-23 09:28:01 GMT\"\n },\n \"Transaction_counter\": 1,\n \"Transactions\": []\n}"
+  {
+   "Version": 1,
+   "HashPrevBlock": "0000000000000000000000000000000000000000000000000000000000000000",
+   "HashMerkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
+   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
+   "BlockID": 0,
+   "Magic_No": "0xD9B4BEF9",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": []
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "0e58229234c955a05696c64625d5d910fc77c867b07595d814bc412c5427fa48",
+   "HashMerkleRoot": "b77ef9cf1f31548888aa86bb68405dffc74406ba88735e98a47422b410778e3a",
+   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
+   "BlockID": 1,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": []
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "308cd9dafaa56b88705fb47326bbcf816aaba71aa65105fab20322ea5d0fc1ea",
+   "HashMerkleRoot": "54748b90bda5d4381aeb1dd4b989438e4ea6b48d1bf25d5d17c652d29ecb88ca",
+   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
+   "BlockID": 2,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": []
+  }
  ],
- "BlockCount": 1
+ "BlockCount": 2
 }

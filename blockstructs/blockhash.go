@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 	"encoding/json"
+	"fmt"
 )
 
 func (b *Blockchain) MerkelRoot() string {
@@ -35,14 +36,29 @@ func (b *Blockchain) MerkelRoot() string {
         }
         hashes = newHashes
     }
-	return hashes[0]
+	return string(hashes[0])
 }
 
-func (b *Blockchain) PrevBlockHash() string {
+/*func (b *Blockchain) PrevBlockHash() string {
 	last := b.Blocks[len(b.Blocks)-1]
 	BlockHash, err := json.Marshal(last)
 	if err != nil {
 		panic(err)
 	}
 	return hex.EncodeToString(BlockHash)
+}*/
+
+func (b *Blockchain) PrevBlockHash() string {
+	//last := []string{}
+	if  len(b.Blocks) <= 0 {
+		//convert to string
+		last := fmt.Sprintf("%v" , (b.Blocks[1]))
+		hash := sha256.Sum256([]byte(last))
+	return hex.EncodeToString(hash[:])
+	} else {
+		//convert to string
+		last := fmt.Sprintf("%v" , b.Blocks[len(b.Blocks)-1])
+		hash := sha256.Sum256([]byte(last))
+	return hex.EncodeToString(hash[:])
+	}
 }
