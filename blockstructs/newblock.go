@@ -41,9 +41,6 @@ func (b *Blockchain) NewGenesisBlock() {
 		Transactions:        []Transaction{},
 	}
 	fmt.Println("New block :",block.BlockHash())
-	//block.ThisBlockHash = blockHash
-	//new, err := json.MarshalIndent(block, "", " ")
-	//Utils.Check(err)
 	b.Blocks = append(b.Blocks, block)
 }
 
@@ -58,9 +55,7 @@ func (b *Block) BlockHash() string {
 
 func NewBlockchain() *Blockchain {
 	blockchain := &Blockchain{}
-	//genesisBlock := blockchain.NewGenesisBlock()
 	blockchain.NewGenesisBlock()
-	//blockchain.Blocks = append(blockchain.Blocks, genesisBlock)
 	return blockchain
 }
 

@@ -15,13 +15,6 @@ type Blockchain struct {
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
 
-/*type BlockHeader struct {
-	Version        int    //Block version number, You upgrade the software and it specifies a new version, 4 bytles
-	hashPrevBlock  string //256-bit hash of the previous block header, A new block comes in, 32 bytes
-	hashMerkleRoot string //256-bit hash based on all of the transactions in the block, A transaction is accepted, 32 bytes
-	TimeStamp 	   string //Current block timestamp as seconds since 1970-01-01T00:00 UTC, 4 bytes
-}*/
-
 type Block struct {
 	//Header
 	Version        		int    //Block version number, You upgrade the software and it specifies a new version, 4 bytles

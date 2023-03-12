@@ -39,15 +39,6 @@ func (b *Blockchain) MerkelRoot() string {
 	return string(hashes[0])
 }
 
-/*func (b *Blockchain) PrevBlockHash() string {
-	last := b.Blocks[len(b.Blocks)-1]
-	BlockHash, err := json.Marshal(last)
-	if err != nil {
-		panic(err)
-	}
-	return hex.EncodeToString(BlockHash)
-}*/
-
 func (b *Blockchain) PrevBlockHash() string {
 	//last := []string{}
 	if  len(b.Blocks) <= 0 {
