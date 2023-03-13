@@ -1,10 +1,12 @@
-MerkelRoot and PrevBlockHash functions are done, but the PrevBlockHash is not changing in new blocks.
-write a function to write the contents of a block to a file.
-write a function to read the contents of a block from a file.
+x MerkelRoot and PrevBlockHash functions are done, but the PrevBlockHash is not changing in new blocks.
+x write a function to write the contents of a block to a file.
+x write a function to read the contents of a block from a file.
+starting interface
+load the current blockchain 1st
 try and validate blocks.
 
 
-notes:
+Person notes expanding on project but not intended for this project:
 currencies?
 
 
