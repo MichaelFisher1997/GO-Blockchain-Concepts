@@ -1,16 +1,34 @@
 package BlockStructs
 
 import (
+	"crypto/ecdsa"
 	"time"
 )
 
-type Transaction struct {
-	// transaction fields
+type Wallet struct {
+	PublicKey  []byte
+	PrivateKey []byte
+	Balance    float64
 }
+
+type Transaction struct {
+	SenderPublicKey    []byte
+	ReceiverPublicKey  []byte
+	Amount             float64
+	Signature          []byte
+}
+
+func NewTransaction(sender Wallet, receiverPublicKey ecdsa.PublicKey, amount float64) *Transaction {
+	// Create a new transaction with the provided details.
+	return nil
+}
+
 
 type Blockchain struct {
 	Blocks []*Block
 	BlockCount int
+	Wallets []*Wallet
+	PendingTransactions []*Transaction
 	//Root  hash //Merkel root
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
@@ -26,10 +44,11 @@ type Block struct {
 	Blocksize           int     //number of bytes following up to end of block, 4 bytes
 	Transaction_counter int      // positive integer VI = VarInt, 1 - 9 bytes
 	//Coinbase            string   //the first transaction in a block, 1 - 9 bytes, 32 characters
-	Transactions        []Transaction // the (non empty) list of transaction, <Transaction counter>-many transactions
+	Transactions 		[]*Transaction // the (non empty) list of transaction, <Transaction counter>-many transactions
 }
 
 // fmt.Println(t.Format("20060102150405"))
 func TimeStamp() string {
 	return time.Now().Format(time.RFC850) //maybe change this to ow.UnixNano() // number of nanoseconds since January 1, 1970 UTC
 }
+

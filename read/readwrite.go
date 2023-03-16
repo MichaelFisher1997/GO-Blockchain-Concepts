@@ -2,13 +2,14 @@ package Read
 
 import (
 	"encoding/json"
+	BlockStructs "go-blockchain/blockstructs"
 	blockstructs "go-blockchain/blockstructs"
 	"os"
-)
 
-type MyStruct struct {
-    MyArray []int
-}
+	//"os"
+	"bytes"
+	"encoding/gob"
+)
 
 func SaveToFile(filename string, b *blockstructs.Blockchain) error {
     // Convert the struct to a JSON string
@@ -20,26 +21,42 @@ func SaveToFile(filename string, b *blockstructs.Blockchain) error {
     // Write the JSON string to the file
     err = os.WriteFile(filename, jsonString, 0644)
     if err != nil {
-        return err
+        panic(err)
     }
 
     return nil
 }
 
-func ReadFromFile(filename string) (*blockstructs.Blockchain, error) {
-    // Read the contents of the file
-    fileContents, err := os.ReadFile(filename)
-    if err != nil {
-        return &blockstructs.Blockchain{}, err
-    }
+// SaveBlockchain saves the current state of the blockchain to a binary file.
+func SaveBlockchain(blockchain *BlockStructs.Blockchain, filename string) error {
+	var buf bytes.Buffer
+	enc := gob.NewEncoder(&buf)
 
-    // Unmarshal the JSON string into a struct
-    var myStruct MyStruct
-    err = json.Unmarshal(fileContents, &myStruct)
-    if err != nil {
-        return &blockstructs.Blockchain{}, err
-    }
+	if err := enc.Encode(blockchain); err != nil {
+		return err
+	}
 
-    return &blockstructs.Blockchain{}, nil
+	if err := os.WriteFile(filename, buf.Bytes(), 0644); err != nil {
+		return err
+	}
+
+	return nil
 }
 
+// LoadBlockchain reads and loads the saved blockchain state from a binary file.
+func LoadBlockchain(filename string) (*BlockStructs.Blockchain, error) {
+	data, err := os.ReadFile(filename)
+	if err != nil {
+		return nil, err
+	}
+
+	var blockchain BlockStructs.Blockchain
+	buf := bytes.NewReader(data)
+	dec := gob.NewDecoder(buf)
+
+	if err := dec.Decode(&blockchain); err != nil {
+		return nil, err
+	}
+
+	return &blockchain, nil
+}

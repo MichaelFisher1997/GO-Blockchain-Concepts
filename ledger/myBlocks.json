@@ -4,7 +4,7 @@
    "Version": 1,
    "HashPrevBlock": "0000000000000000000000000000000000000000000000000000000000000000",
    "HashMerkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
+   "TimeStamp": "Thursday, 16-Mar-23 05:41:08 GMT",
    "BlockID": 0,
    "Magic_No": "0xD9B4BEF9",
    "Blocksize": 80,
@@ -13,26 +13,35 @@
   },
   {
    "Version": 1,
-   "HashPrevBlock": "0e58229234c955a05696c64625d5d910fc77c867b07595d814bc412c5427fa48",
-   "HashMerkleRoot": "b77ef9cf1f31548888aa86bb68405dffc74406ba88735e98a47422b410778e3a",
-   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
+   "HashPrevBlock": "02cba9d2e528096969530785bd4fc0b51c3762270809d103b735ccd6f16fc80f",
+   "HashMerkleRoot": "14d5cd1040293c6b17106f29ac8c5ab9f1c0d348c0dd8026f3b852d386728537",
+   "TimeStamp": "Thursday, 16-Mar-23 05:41:08 GMT",
    "BlockID": 1,
    "Magic_No": "0xF9S834SK",
    "Blocksize": 80,
-   "Transaction_counter": 0,
-   "Transactions": []
-  },
-  {
-   "Version": 1,
-   "HashPrevBlock": "308cd9dafaa56b88705fb47326bbcf816aaba71aa65105fab20322ea5d0fc1ea",
-   "HashMerkleRoot": "54748b90bda5d4381aeb1dd4b989438e4ea6b48d1bf25d5d17c652d29ecb88ca",
-   "TimeStamp": "Sunday, 12-Mar-23 00:38:13 GMT",
-   "BlockID": 2,
-   "Magic_No": "0xF9S834SK",
-   "Blocksize": 80,
-   "Transaction_counter": 0,
-   "Transactions": []
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BBd+/Z3jQUk9yeB9u3BDo2BGLZGyqyWqDlwDGHLumIx4gMgLwWT3IRm8yGOcpOe3vGT3zHc3qQE8dCeedl0Zc1c=",
+     "ReceiverPublicKey": "BN2muESgXqMDnuep8rQJ4HYXqLvPsUisQ5hr/8b+GUYOpKd2lm6Dlo+OrDwN6rEx5jNhVbKgpUerpkm+2xBX1hk=",
+     "Amount": 10,
+     "Signature": "DV4nArEw6ts/Meufggizot4UMBkVBHKF+4fcg8Ebw9+W5hfNCaZGbwqI6kpg0AJktLwGEtEFbv3ZkQCmJi4iWg=="
+    }
+   ]
   }
  ],
- "BlockCount": 2
+ "BlockCount": 1,
+ "Wallets": [
+  {
+   "PublicKey": "BBd+/Z3jQUk9yeB9u3BDo2BGLZGyqyWqDlwDGHLumIx4gMgLwWT3IRm8yGOcpOe3vGT3zHc3qQE8dCeedl0Zc1c=",
+   "PrivateKey": "PxgeEy3wPU7PUaxwIyBO0VZtjkklhuVPHCukk7XAEKE=",
+   "Balance": 90
+  },
+  {
+   "PublicKey": "BN2muESgXqMDnuep8rQJ4HYXqLvPsUisQ5hr/8b+GUYOpKd2lm6Dlo+OrDwN6rEx5jNhVbKgpUerpkm+2xBX1hk=",
+   "PrivateKey": "xD1Z30Bi4AbkhcDvL+vwszYpE7eD5xchCHyol3z1dCI=",
+   "Balance": 60
+  }
+ ],
+ "PendingTransactions": []
 }

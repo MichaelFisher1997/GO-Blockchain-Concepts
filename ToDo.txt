@@ -2,9 +2,9 @@ x MerkelRoot and PrevBlockHash functions are done, but the PrevBlockHash is not 
 x write a function to write the contents of a block to a file.
 x write a function to read the contents of a block from a file.
 starting interface
-load the current blockchain 1st
+x load the current blockchain 1st
 try and validate blocks.
-
+x ECDSA
 
 Person notes expanding on project but not intended for this project:
 currencies?
@@ -34,3 +34,83 @@ moveies, genres and such, so a node would only hold the data for specific sub se
 think about it, split the ditributed computing into something siimular to kubanaties, music streaming service will have a larger use base, so more fees being accumalated,
 and also more pods in the pool, but each pods/node will get a smaller percent when the fees are shard.
 something like a FPS shooting game servers, might have less users, so less fees, but also less pods, so each pod/node will get a larger percent of the toal fees when a block is provided.
+
+
+
+
+______________________
+To implement accounts and transactions using the Diffie-Hellman key exchange, you would need to make some modifications to your existing blockchain application. Here's an outline of the steps you need to follow:
+
+Create a new struct Account to store the account's public key, private key, and balance.
+
+Implement the Diffie-Hellman key exchange to generate a shared secret between two parties (accounts). This will be used to create a transaction.
+
+Modify the Transaction struct to include necessary fields, such as sender's public key, receiver's public key, amount, and signature.
+
+Add functionality to sign transactions using the sender's private key.
+
+Implement transaction validation that checks the transaction signature, verifies the sender's balance, and ensures the sender is not the same as the receiver.
+
+Update the blockchain to include transactions within blocks.
+
+Here's a high-level example of how to implement the above steps in your application:
+
+Create the Account struct:
+go
+Copy code
+type Account struct {
+	PublicKey  []byte
+	PrivateKey []byte
+	Balance    float64
+}
+Implement the Diffie-Hellman key exchange:
+go
+Copy code
+// Generate a new key pair for an account.
+func GenerateKeyPair() ([]byte, []byte) {
+    // Generate a public-private key pair using an elliptic curve, such as Curve25519.
+}
+
+// Calculate the shared secret between two accounts using their public keys.
+func CalculateSharedSecret(privateKeyA []byte, publicKeyB []byte) []byte {
+    // Calculate the shared secret using the Diffie-Hellman key exchange.
+}
+Modify the Transaction struct and create a new transaction:
+go
+Copy code
+type Transaction struct {
+    SenderPublicKey    []byte
+    ReceiverPublicKey  []byte
+    Amount             float64
+    Signature          []byte
+}
+
+func NewTransaction(senderPrivateKey, receiverPublicKey []byte, amount float64) *Transaction {
+    // Create a new transaction with the provided details.
+}
+Sign transactions using the sender's private key:
+go
+Copy code
+func SignTransaction(transaction *Transaction, senderPrivateKey []byte) {
+    // Sign the transaction using the sender's private key.
+}
+Implement transaction validation:
+go
+Copy code
+func IsValidTransaction(transaction *Transaction) bool {
+    // Verify the transaction signature, sender's balance, and other necessary checks.
+}
+Update the blockchain to include transactions within blocks:
+go
+Copy code
+type Block struct {
+    // ...
+    Transactions []*Transaction
+}
+
+func (blockchain *Blockchain) AddTransaction(transaction *Transaction) {
+    // Add a valid transaction to the blockchain, appending it to the latest block or creating a new one.
+}
+Keep in mind that this example is a high-level overview of implementing accounts and transactions using the Diffie-Hellman key exchange. The actual implementation will require a deeper understanding of cryptography, elliptic curve libraries, and other blockchain concepts.
+
+Note that the Diffie-Hellman key exchange is not typically used for signing transactions in a blockchain application. Instead, public key cryptography, such as ECDSA or EdDSA, is used for generating key pairs, signing transactions, and verifying signatures.
