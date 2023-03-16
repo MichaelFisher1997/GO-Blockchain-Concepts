@@ -3,10 +3,8 @@ package main
 import (
 	"fmt"
 	BlockStructs "go-blockchain/blockstructs"
-
 	Read "go-blockchain/read"
 	Utils "go-blockchain/utils"
-	//"os"
 )
 
 func main() {
@@ -55,6 +53,13 @@ func main() {
 
 	// Print the transaction in the latest block
 	fmt.Printf("Transaction in the latest block: %v\n", latestBlock.Transactions[0])
+
+	// Check the balance of the sender and receiver wallets
+	senderBalance := blockchain.GetBalance(senderWallet.PublicKey)
+	receiverBalance := blockchain.GetBalance(receiverWallet.PublicKey)
+
+	fmt.Printf("Sender balance: %f\n", senderBalance)
+	fmt.Printf("Receiver balance: %f\n", receiverBalance)
 
 	//----------------SAVE-------------
 	//time.Sleep(1 * time.Second)

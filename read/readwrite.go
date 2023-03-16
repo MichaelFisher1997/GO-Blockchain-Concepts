@@ -1,17 +1,14 @@
 package Read
 
 import (
-	"encoding/json"
-	BlockStructs "go-blockchain/blockstructs"
-	blockstructs "go-blockchain/blockstructs"
-	"os"
-
-	//"os"
 	"bytes"
 	"encoding/gob"
+	"encoding/json"
+	BlockStructs "go-blockchain/blockstructs"
+	"os"
 )
 
-func SaveToFile(filename string, b *blockstructs.Blockchain) error {
+func SaveToFile(filename string, b *BlockStructs.Blockchain) error {
     // Convert the struct to a JSON string
     jsonString, err := json.MarshalIndent(b,"", " ")
     if err != nil {
