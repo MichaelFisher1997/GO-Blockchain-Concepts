@@ -1,0 +1,57 @@
+Date : 2023-03-22 14:12:26
+Directory : /home/micqdf/Documents/go-blockchain
+Total : 19 files,  1154 codes, 97 comments, 114 blanks, all 1365 lines
+
+Languages
++------------------+------------+------------+------------+------------+------------+
+| language         | files      | code       | comment    | blank      | total      |
++------------------+------------+------------+------------+------------+------------+
+| JSON             |          1 |        630 |          0 |          0 |        630 |
+| Go               |         13 |        471 |         96 |        107 |        674 |
+| YAML             |          2 |         35 |          1 |          2 |         38 |
+| Go Checksum File |          1 |         11 |          0 |          1 |         12 |
+| Go Module File   |          1 |          7 |          0 |          3 |         10 |
+| Markdown         |          1 |          0 |          0 |          1 |          1 |
++------------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                      |         19 |      1,154 |         97 |        114 |      1,365 |
+| . (Files)                                                              |          4 |         40 |          5 |          9 |         54 |
+| .trunk                                                                 |          2 |         35 |          1 |          2 |         38 |
+| .trunk (Files)                                                         |          1 |         26 |          0 |          1 |         27 |
+| .trunk/configs                                                         |          1 |          9 |          1 |          1 |         11 |
+| blockstructs                                                           |          8 |        321 |         82 |         81 |        484 |
+| interface                                                              |          1 |         39 |          2 |          5 |         46 |
+| ledger                                                                 |          1 |        630 |          0 |          0 |        630 |
+| read                                                                   |          2 |         83 |          7 |         16 |        106 |
+| utils                                                                  |          1 |          6 |          0 |          1 |          7 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| filename                                                               | language         | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------------+------------+------------+------------+------------+
+| /home/micqdf/Documents/go-blockchain/.trunk/configs/.markdownlint.yaml | YAML             |          9 |          1 |          1 |         11 |
+| /home/micqdf/Documents/go-blockchain/.trunk/trunk.yaml                 | YAML             |         26 |          0 |          1 |         27 |
+| /home/micqdf/Documents/go-blockchain/README.md                         | Markdown         |          0 |          0 |          1 |          1 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/GetBalance.go        | Go               |         62 |         14 |         16 |         92 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/blockhash.go         | Go               |         50 |          5 |          5 |         60 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/blockstrucks.go      | Go               |         39 |          6 |         10 |         55 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/newblock.go          | Go               |         50 |         18 |         11 |         79 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/printblockchain.go   | Go               |         21 |          9 |          5 |         35 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/signtransactions.go  | Go               |         53 |         16 |         22 |         91 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/startblockchain.go   | Go               |         26 |          6 |          3 |         35 |
+| /home/micqdf/Documents/go-blockchain/blockstructs/wallet.go            | Go               |         20 |          8 |          9 |         37 |
+| /home/micqdf/Documents/go-blockchain/go.mod                            | Go Module File   |          7 |          0 |          3 |         10 |
+| /home/micqdf/Documents/go-blockchain/go.sum                            | Go Checksum File |         11 |          0 |          1 |         12 |
+| /home/micqdf/Documents/go-blockchain/interface/interface.go            | Go               |         39 |          2 |          5 |         46 |
+| /home/micqdf/Documents/go-blockchain/ledger/myBlocks.json              | JSON             |        630 |          0 |          0 |        630 |
+| /home/micqdf/Documents/go-blockchain/main.go                           | Go               |         22 |          5 |          4 |         31 |
+| /home/micqdf/Documents/go-blockchain/read/readledger.go                | Go               |         40 |          3 |          4 |         47 |
+| /home/micqdf/Documents/go-blockchain/read/readwrite.go                 | Go               |         43 |          4 |         12 |         59 |
+| /home/micqdf/Documents/go-blockchain/utils/utils.go                    | Go               |          6 |          0 |          1 |          7 |
+| Total                                                                  |                  |      1,154 |         97 |        114 |      1,365 |
++------------------------------------------------------------------------+------------------+------------+------------+------------+------------+

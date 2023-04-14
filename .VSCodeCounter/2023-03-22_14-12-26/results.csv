@@ -1,0 +1,21 @@
+"filename", "language", "Markdown", "Go Module File", "Go", "Go Checksum File", "JSON", "YAML", "comment", "blank", "total"
+"/home/micqdf/Documents/go-blockchain/.trunk/configs/.markdownlint.yaml", "YAML", 0, 0, 0, 0, 0, 9, 1, 1, 11
+"/home/micqdf/Documents/go-blockchain/.trunk/trunk.yaml", "YAML", 0, 0, 0, 0, 0, 26, 0, 1, 27
+"/home/micqdf/Documents/go-blockchain/README.md", "Markdown", 0, 0, 0, 0, 0, 0, 0, 1, 1
+"/home/micqdf/Documents/go-blockchain/blockstructs/GetBalance.go", "Go", 0, 0, 62, 0, 0, 0, 14, 16, 92
+"/home/micqdf/Documents/go-blockchain/blockstructs/blockhash.go", "Go", 0, 0, 50, 0, 0, 0, 5, 5, 60
+"/home/micqdf/Documents/go-blockchain/blockstructs/blockstrucks.go", "Go", 0, 0, 39, 0, 0, 0, 6, 10, 55
+"/home/micqdf/Documents/go-blockchain/blockstructs/newblock.go", "Go", 0, 0, 50, 0, 0, 0, 18, 11, 79
+"/home/micqdf/Documents/go-blockchain/blockstructs/printblockchain.go", "Go", 0, 0, 21, 0, 0, 0, 9, 5, 35
+"/home/micqdf/Documents/go-blockchain/blockstructs/signtransactions.go", "Go", 0, 0, 53, 0, 0, 0, 16, 22, 91
+"/home/micqdf/Documents/go-blockchain/blockstructs/startblockchain.go", "Go", 0, 0, 26, 0, 0, 0, 6, 3, 35
+"/home/micqdf/Documents/go-blockchain/blockstructs/wallet.go", "Go", 0, 0, 20, 0, 0, 0, 8, 9, 37
+"/home/micqdf/Documents/go-blockchain/go.mod", "Go Module File", 0, 7, 0, 0, 0, 0, 0, 3, 10
+"/home/micqdf/Documents/go-blockchain/go.sum", "Go Checksum File", 0, 0, 0, 11, 0, 0, 0, 1, 12
+"/home/micqdf/Documents/go-blockchain/interface/interface.go", "Go", 0, 0, 39, 0, 0, 0, 2, 5, 46
+"/home/micqdf/Documents/go-blockchain/ledger/myBlocks.json", "JSON", 0, 0, 0, 0, 630, 0, 0, 0, 630
+"/home/micqdf/Documents/go-blockchain/main.go", "Go", 0, 0, 22, 0, 0, 0, 5, 4, 31
+"/home/micqdf/Documents/go-blockchain/read/readledger.go", "Go", 0, 0, 40, 0, 0, 0, 3, 4, 47
+"/home/micqdf/Documents/go-blockchain/read/readwrite.go", "Go", 0, 0, 43, 0, 0, 0, 4, 12, 59
+"/home/micqdf/Documents/go-blockchain/utils/utils.go", "Go", 0, 0, 6, 0, 0, 0, 0, 1, 7
+"Total", "-", 0, 7, 471, 11, 630, 35, 97, 114, 1365

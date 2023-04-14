@@ -1,7 +1,6 @@
 package BlockStructs
 
 import (
-	"crypto/ecdsa"
 	"time"
 )
 
@@ -18,17 +17,33 @@ type Transaction struct {
 	Signature          []byte
 }
 
-func NewTransaction(sender Wallet, receiverPublicKey ecdsa.PublicKey, amount float64) *Transaction {
-	// Create a new transaction with the provided details.
-	return nil
+type CDKeyNFT struct {
+    ID          uint64 `json:"id"`
+    CDKey       string `json:"cd_key"`
+    TokenID     uint64 `json:"token_id"`
+    Minted      bool   `json:"minted"`
+    MintedBy    string `json:"minted_by"`
+    MintedOn    string `json:"minted_on"`
+	OwnerPubKey string `json:"owner_pub_key"`
 }
 
+type NFTTransaction struct {
+	ID             uint64 `json:"id"`
+	NFTID          uint64 `json:"nft_id"`
+	SenderPubKey   string `json:"sender_pub_key"`
+	ReceiverPubKey string `json:"receiver_pub_key"`
+	Amount         float64 `json:"amount"`
+	Signature      string `json:"signature"`
+	Confirmed      bool   `json:"confirmed"`
+}
 
 type Blockchain struct {
 	Blocks []*Block
 	BlockCount int
 	Wallets []*Wallet
 	PendingTransactions []*Transaction
+	PendingNFTTransactions []*NFTTransaction `json:"pending_nft_transactions"`
+	NFTs []*CDKeyNFT
 	//Root  hash //Merkel root
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
@@ -45,10 +60,11 @@ type Block struct {
 	Transaction_counter int      // positive integer VI = VarInt, 1 - 9 bytes
 	//Coinbase            string   //the first transaction in a block, 1 - 9 bytes, 32 characters
 	Transactions 		[]*Transaction // the (non empty) list of transaction, <Transaction counter>-many transactions
+	NFTTransactions []*NFTTransaction `json:"nft_transactions"`
+
 }
 
 // fmt.Println(t.Format("20060102150405"))
 func TimeStamp() string {
 	return time.Now().Format(time.RFC850) //maybe change this to ow.UnixNano() // number of nanoseconds since January 1, 1970 UTC
 }
-

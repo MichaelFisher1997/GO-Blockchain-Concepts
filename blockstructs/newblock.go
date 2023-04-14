@@ -22,13 +22,34 @@ func (b *Blockchain) NewBlock(transactions []*Transaction) {
         Transactions:        transactions,
 	}
 	fmt.Println("New block :",block.BlockHash())
-	//block.ThisBlockHash = blockHash
-	//new, err := json.MarshalIndent(block, "", " ")
-	//Utils.Check(err)
 	b.Blocks = append(b.Blocks, block)
 	// Clear the pending transactions after adding them to the new block
 	b.PendingTransactions = []*Transaction{}
 }
+
+func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction) {
+	b.BlockCount = b.BlockCount + 1
+
+	block := &Block{
+		Magic_No:          "0xF9S834SK",
+		BlockID:           b.BlockCount,
+		Blocksize:         80,
+		Version:           1,
+		HashPrevBlock:     b.PrevBlockHash(),
+		HashMerkleRoot:    b.MerkelRoot(),
+		TimeStamp:         TimeStamp(),
+		Transaction_counter: len(nftTransactions),
+		NFTTransactions:     nftTransactions,
+	}
+
+	fmt.Println("New NFT block :", block.BlockHash())
+	b.Blocks = append(b.Blocks, block)
+	// Clear the pending NFT transactions after adding them to the new block
+	b.PendingNFTTransactions = []*NFTTransaction{}
+}
+
+
+
 
 
 

@@ -6,8 +6,24 @@ import (
 )
 
 func Start() *Blockchain{
-	senderWallet := NewWallet(100.0) // The sender wallet will start with a balance of 100
-	receiverWallet := NewWallet(50.0) // The receiver wallet will start with a balance of 0
+	// Create a new blockchain
+	blockchain := NewBlockchain()
+	latestBlock := blockchain.Blocks[len(blockchain.Blocks)-1]
+	fmt.Printf("Latest block: %v\n", latestBlock)
+
+	// Check if the latest block has at least one transaction
+	if len(latestBlock.Transactions) > 0 {
+		fmt.Printf("Transaction in the latest block: %v\n", latestBlock.Transactions[0])
+	} else {
+		fmt.Println("No transactions in the latest block.")
+	}
+	return blockchain
+
+}
+
+/*
+senderWallet := NewWallet(100.0) // The sender wallet will start with a balance of 100
+	receiverWallet := NewWallet(0.0) // The receiver wallet will start with a balance of 0
 	blockchain := NewBlockchain()
 	// Add wallets to the blockchain
 	blockchain.Wallets = append(blockchain.Wallets, senderWallet, receiverWallet)
@@ -26,10 +42,9 @@ func Start() *Blockchain{
 	transactions := []*Transaction{transaction}
 	// Create a new block with the transaction
     blockchain.NewBlock(transactions)
-	blockchain.UpdateBalances()  // Update the wallet balances
+	//blockchain.UpdateBalances()  // Update the wallet balances
 	latestBlock := blockchain.Blocks[len(blockchain.Blocks)-1]
 	fmt.Printf("Latest block: %v\n", latestBlock)
 	fmt.Printf("Transaction in the latest block: %v\n", latestBlock.Transactions[0])
 	return blockchain
-
-}
+	*/
