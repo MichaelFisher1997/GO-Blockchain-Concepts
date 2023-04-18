@@ -2,6 +2,7 @@ package BlockStructs
 
 import (
 	"crypto/sha256"
+	"encoding/base64"
 	"encoding/hex"
 	"fmt"
 )
@@ -41,12 +42,46 @@ func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction) {
 		Transaction_counter: len(nftTransactions),
 		NFTTransactions:     nftTransactions,
 	}
+	// Update wallet balances and NFT ownership
+	for _, nftTransaction := range nftTransactions {
+		if nftTransaction.Confirmed {
+			// Deduct the amount from the seller's wallet
+			senderPublicKeyBytes, err := base64.StdEncoding.DecodeString(nftTransaction.SenderPubKey)
+			if err != nil {
+				fmt.Println("Error decoding seller's public key:", err)
+				return
+			}
+			sellerWallet := b.findWalletByPublicKey(senderPublicKeyBytes)
+			if sellerWallet != nil {
+				sellerWallet.Balance -= nftTransaction.Amount
+			}
 
+			// Decode the buyer's public key from base64
+			receiverPublicKeyBytes, err := base64.StdEncoding.DecodeString(nftTransaction.ReceiverPubKey)
+			if err != nil {
+				fmt.Println("Error decoding buyer's public key:", err)
+				return
+			}
+
+			// Add the amount to the buyer's wallet
+			buyerWallet := b.findWalletByPublicKey(receiverPublicKeyBytes)
+			if buyerWallet != nil {
+				buyerWallet.Balance += nftTransaction.Amount
+			}
+
+			// Update the NFT's ownership
+			nft := b.findNFTByID(nftTransaction.NFTID)
+			if nft != nil {
+				nft.OwnerPubKey = nftTransaction.ReceiverPubKey
+			}
+		}
+	}
 	fmt.Println("New NFT block :", block.BlockHash())
 	b.Blocks = append(b.Blocks, block)
 	// Clear the pending NFT transactions after adding them to the new block
 	b.PendingNFTTransactions = []*NFTTransaction{}
 }
+
 
 
 
