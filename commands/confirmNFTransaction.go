@@ -57,16 +57,6 @@ func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
 	nftTransaction.Signature = signature
 	nftTransaction.Confirmed = true
 
-	// Add the transaction to the list of pending NFT transactions
-	b.PendingNFTTransactions = append(b.PendingNFTTransactions, nftTransaction)
-
-	// Update the NFT's OwnerPubKey value
-	for _, nft := range b.NFTs {
-		if nft.ID == nftID {
-			nft.OwnerPubKey = buyerPublicKeyStr
-			break
-		}
-	}
 
 	// Create a new block with the pending NFT transactions
 	b.NewNFTBlock(b.PendingNFTTransactions)
