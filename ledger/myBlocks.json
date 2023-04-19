@@ -4,73 +4,33 @@
    "Version": 1,
    "HashPrevBlock": "0000000000000000000000000000000000000000000000000000000000000000",
    "HashMerkleRoot": "0000000000000000000000000000000000000000000000000000000000000000",
-   "TimeStamp": "Tuesday, 18-Apr-23 22:10:00 BST",
+   "TimeStamp": "Wednesday, 19-Apr-23 22:52:02 BST",
    "BlockID": 0,
    "Magic_No": "0xD9B4BEF9",
    "Blocksize": 80,
    "Transaction_counter": 0,
    "Transactions": [],
-   "nft_transactions": null
-  },
-  {
-   "Version": 1,
-   "HashPrevBlock": "801e2c7d49c60230bc23182718f4fa303c1371dc2f988c3a1b08b7cc28fd72fb",
-   "HashMerkleRoot": "2d095c6f063ffe11e883aa7794cbd01743d1f7c390d4be374c21ac6849f6ed05",
-   "TimeStamp": "Tuesday, 18-Apr-23 22:10:00 BST",
-   "BlockID": 1,
-   "Magic_No": "0xF9S834SK",
-   "Blocksize": 80,
-   "Transaction_counter": 0,
-   "Transactions": null,
-   "nft_transactions": null
-  },
-  {
-   "Version": 1,
-   "HashPrevBlock": "e413162561b98bce5faf2ec1c9a99cbc249a1b6aa10a7e842b5ca932450cd49d",
-   "HashMerkleRoot": "8a19623a2082b5dd0da482327eda59f2459cfca110e6753d86822ab27e4c35e9",
-   "TimeStamp": "Tuesday, 18-Apr-23 22:11:55 BST",
-   "BlockID": 2,
-   "Magic_No": "0xF9S834SK",
-   "Blocksize": 80,
-   "Transaction_counter": 1,
-   "Transactions": null,
-   "nft_transactions": [
-    {
-     "id": 0,
-     "nft_id": 123,
-     "sender_pub_key": "BCJGek3C6GFO2Wr9OFzI+sw6mkRfeoVlkv3357QWfbEsCMf4XM2f0kdR8gNxeW7BB9MwLwmpkuWUbEMNDqxLdwA=",
-     "receiver_pub_key": "BIVJjhFCRJnkSKE6w0Sli5GFv549HTka2kDRRXEg61yH/4XMekaoTyy3lc4gEuHY9e4Ef8dAISMSX+ylZbM2ikk=",
-     "amount": 25,
-     "signature": "KoDoQjNWNSsbMfzRoUHoYfvj2I5Qy+KhUqdsdztKaj6EdG2b3ERgAb2gw8BtOGSJggFXhw1YKe0R0MB2NPDGKw==",
-     "confirmed": true
-    }
-   ]
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
   }
  ],
- "BlockCount": 2,
+ "BlockCount": 0,
  "Wallets": [
   {
-   "PublicKey": "BCJGek3C6GFO2Wr9OFzI+sw6mkRfeoVlkv3357QWfbEsCMf4XM2f0kdR8gNxeW7BB9MwLwmpkuWUbEMNDqxLdwA=",
-   "PrivateKey": "78nynJwNlUSjp9UeCF/MzMc8gDjZxp0vFMOxUDRy/Jo=",
-   "Balance": 25
+   "PublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+   "PrivateKey": "P4kXX2bGQdZXkAf7WuPUehsqqf4kktsJXWeXGSdEdr4=",
+   "Balance": 50
   },
   {
-   "PublicKey": "BIVJjhFCRJnkSKE6w0Sli5GFv549HTka2kDRRXEg61yH/4XMekaoTyy3lc4gEuHY9e4Ef8dAISMSX+ylZbM2ikk=",
-   "PrivateKey": "z3jOrYogZTpBi2OHPKqwG45iJbcTzumwWIgdcA3RJ2o=",
-   "Balance": 75
+   "PublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+   "PrivateKey": "T64iotod7d4re7J/sPC5ZoHqlmJp9TPrGgvok1Npwrc=",
+   "Balance": 100
   }
  ],
- "PendingTransactions": [],
- "pending_nft_transactions": [],
- "NFTs": [
-  {
-   "id": 123,
-   "cd_key": "AB12-CD34-EF56-GH78",
-   "token_id": 1001,
-   "minted": true,
-   "minted_by": "BCJGek3C6GFO2Wr9OFzI+sw6mkRfeoVlkv3357QWfbEsCMf4XM2f0kdR8gNxeW7BB9MwLwmpkuWUbEMNDqxLdwA=",
-   "minted_on": "Tuesday, 18-Apr-23 22:10:57 BST",
-   "owner_pub_key": "BIVJjhFCRJnkSKE6w0Sli5GFv549HTka2kDRRXEg61yH/4XMekaoTyy3lc4gEuHY9e4Ef8dAISMSX+ylZbM2ikk="
-  }
+ "PendingTransactions": null,
+ "pending_nft_transactions": null,
+ "NFTs": null,
+ "Authorities": [
+  "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
  ]
 }

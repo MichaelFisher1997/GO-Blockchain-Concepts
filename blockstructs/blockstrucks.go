@@ -44,6 +44,7 @@ type Blockchain struct {
 	PendingTransactions []*Transaction
 	PendingNFTTransactions []*NFTTransaction `json:"pending_nft_transactions"`
 	NFTs []*CDKeyNFT
+	Authorities          []string
 	//Root  hash //Merkel root
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
@@ -61,6 +62,7 @@ type Block struct {
 	//Coinbase            string   //the first transaction in a block, 1 - 9 bytes, 32 characters
 	Transactions 		[]*Transaction // the (non empty) list of transaction, <Transaction counter>-many transactions
 	NFTTransactions []*NFTTransaction `json:"nft_transactions"`
+	CreatorPubKey string
 
 }
 

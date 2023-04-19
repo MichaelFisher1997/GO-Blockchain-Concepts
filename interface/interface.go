@@ -17,10 +17,38 @@ type BlockInterface interface {
 }
 
 func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
+	//login or new wallet
+	var x int
+	fmt.Print("Welcome to Go-Blockchain\n",
+		"1 - login: \n",
+		"2 - new wallet: \n")
+	fmt.Scan(&x)
+	if x == 2 {
+		Commands.MakeWallet(b)
+	}
+	//login
+	// Ask for the private key
+	var privateKeyStr string
+	fmt.Print("Enter your private key: ")
+	fmt.Scan(&privateKeyStr)
+
+	// Decode the private key and derive the public key
+	privateKeyBytes, err := base64.StdEncoding.DecodeString(privateKeyStr)
+	Utils.Check(err)
+	curve := elliptic.P256()
+	privateKey := &ecdsa.PrivateKey{
+		PublicKey: ecdsa.PublicKey{
+			Curve: curve,
+		},
+		D: new(big.Int).SetBytes(privateKeyBytes),
+	}
+	privateKey.PublicKey.X, privateKey.PublicKey.Y = curve.ScalarBaseMult(privateKey.D.Bytes())
+	publicKeyBytes := elliptic.Marshal(curve, privateKey.PublicKey.X, privateKey.PublicKey.Y)
+	publicKeyStr := base64.StdEncoding.EncodeToString(publicKeyBytes)
+
 	var i int
 	for x := 0; x > -1; x++ {
 		fmt.Print(
-			"Welcome to Go-Blockchain\n",
 			"select on of the following\n",
 			"0 - quit: \n",
 			"1 - new block: \n",
@@ -31,11 +59,13 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			"6 - Get NFTS: \n",
 			"7 - Make NFT Transaction Request: \n",
 			"8 - confirm NFT Transaction: \n",
+			"9 - Get NFT Transaction Requests: \n",
+			"10 - Become Authority: \n",
 			"input number <- : ")
 		fmt.Scan(&i)
 	//--------------------------------------
 		if i == 1 {
-			b.NewBlock(nil)
+			b.NewBlock(nil, publicKeyStr)
 			//b.UpdateBalances()
 			latestBlock := b.Blocks[len(b.Blocks)-1]
 			fmt.Printf("Latest block: %v\n", latestBlock)
@@ -113,6 +143,13 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 		}
 		if 8 == i {
 			Commands.ConfirmNFTTransaction(b)
+			Read.Sync(b)
+		}
+		if 10 == i {
+			var privateKeyStr string
+			fmt.Print("Enter your private key: ")
+			fmt.Scanln(&privateKeyStr)
+			BlockStructs.AddToAuthorities(b, privateKeyStr)
 			Read.Sync(b)
 		}
 		if i == 0 {

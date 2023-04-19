@@ -59,7 +59,7 @@ func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
 
 
 	// Create a new block with the pending NFT transactions
-	b.NewNFTBlock(b.PendingNFTTransactions)
+	b.NewNFTBlock(b.PendingNFTTransactions, b.Authorities[0])
 
 	// Clear the pending NFT transactions
 	b.PendingNFTTransactions = []*BlockStructs.NFTTransaction{}

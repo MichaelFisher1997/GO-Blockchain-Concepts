@@ -7,7 +7,15 @@ import (
 	"fmt"
 )
 
-func (b *Blockchain) NewBlock(transactions []*Transaction) {
+func (b *Blockchain) NewBlock(transactions []*Transaction, creatorPubKey string) {
+	tempBlock := &Block{
+        CreatorPubKey: creatorPubKey,
+    }
+
+    if !b.IsValidBlock(tempBlock) {
+        fmt.Println("Error: Block creator is not an authorized authority.")
+        return
+    }
 	b.BlockCount = b.BlockCount+1
 	//PrevBlockHash :=  ""
 
@@ -21,6 +29,7 @@ func (b *Blockchain) NewBlock(transactions []*Transaction) {
 		TimeStamp:      TimeStamp(),
 		Transaction_counter: len(transactions),
         Transactions:        transactions,
+		CreatorPubKey: creatorPubKey,
 	}
 	fmt.Println("New block :",block.BlockHash())
 	b.Blocks = append(b.Blocks, block)
@@ -28,7 +37,16 @@ func (b *Blockchain) NewBlock(transactions []*Transaction) {
 	b.PendingTransactions = []*Transaction{}
 }
 
-func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction) {
+func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction, creatorPubKey string) {
+	tempBlock := &Block{
+        CreatorPubKey: creatorPubKey,
+    }
+
+    if !b.IsValidBlock(tempBlock) {
+        fmt.Println("Error: Block creator is not an authorized authority.")
+        return
+    }
+
 	b.BlockCount = b.BlockCount + 1
 
 	block := &Block{
@@ -41,6 +59,7 @@ func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction) {
 		TimeStamp:         TimeStamp(),
 		Transaction_counter: len(nftTransactions),
 		NFTTransactions:     nftTransactions,
+		CreatorPubKey: creatorPubKey,
 	}
 	// Update wallet balances and NFT ownership
 	for _, nftTransaction := range nftTransactions {
@@ -94,31 +113,24 @@ func (b *Block) BlockHash() string {
 	h := sha256.Sum256([]byte(header))
 	return hex.EncodeToString(h[:])
 }
-
+/*
+BCJGek3C6GFO2Wr9OFzI+sw6mkRfeoVlkv3357QWfbEsCMf4XM2f0kdR8gNxeW7BB9MwLwmpkuWUbEMNDqxLdwA=
+BIVJjhFCRJnkSKE6w0Sli5GFv549HTka2kDRRXEg61yH/4XMekaoTyy3lc4gEuHY9e4Ef8dAISMSX+ylZbM2ikk=
+*/
 func NewBlockchain() *Blockchain {
     blockchain := &Blockchain{
         Wallets: []*Wallet{},
+		Authorities: []string{},
     }
 
     // Add the genesis block to the blockchain
-    blockchain.NewGenesisBlock()
+    //blockchain.NewGenesisBlock()
 
     return blockchain
 }
 
-/*func (b *Blockchain) AddTransaction(transaction *Transaction) {
-	// Add the transaction to the list of pending transactions
-	b.PendingTransactions = append(b.PendingTransactions, transaction)
 
-	// If there are enough transactions in the pending transactions list,
-	// create a new block.
-	// This value can be adjusted based on the desired number of transactions per block.
-	if len(b.PendingTransactions) >= 1 {
-		b.NewBlock()
-	}
-}*/
-
-func (b *Blockchain) NewGenesisBlock() {
+func (b *Blockchain) NewGenesisBlock(creatorPubKey string) {
 	block := &Block{
 		Magic_No: "0xD9B4BEF9",
 		BlockID: 0,
@@ -129,7 +141,20 @@ func (b *Blockchain) NewGenesisBlock() {
 		TimeStamp:      TimeStamp(),
 		Transaction_counter: 0,
 		Transactions:        []*Transaction{},
+		CreatorPubKey: creatorPubKey,
 	}
 	fmt.Println("New block :",block.BlockHash())
 	b.Blocks = append(b.Blocks, block)
+}
+
+
+func (b *Blockchain) IsValidBlock(block *Block) bool {
+	// Check if the block creator's public key is in the list of approved authorities
+	for _, authority := range b.Authorities {
+		if block.CreatorPubKey == authority {
+			return true
+		}
+	}
+
+	return false
 }

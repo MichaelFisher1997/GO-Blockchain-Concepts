@@ -62,7 +62,7 @@ func ValidateAndAddTransactions(b *Blockchain) {
 	}
 
 	// Create a new block with valid transactions
-	b.NewBlock(validTransactions)
+	b.NewBlock(validTransactions,b.Authorities[0])
 
 	// Clear the pending transactions
 	b.PendingTransactions = []*Transaction{}

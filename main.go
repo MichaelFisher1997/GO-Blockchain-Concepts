@@ -3,7 +3,9 @@ package main
 import (
 	"fmt"
 	BlockStructs "go-blockchain/blockstructs"
-	Interface "go-blockchain/interface"
+
+	//Interface "go-blockchain/interface"
+	api "go-blockchain/api"
 	Read "go-blockchain/read"
 	Utils "go-blockchain/utils"
 )
@@ -16,8 +18,12 @@ func main() {
         //blockchain = BlockStructs.NewBlockchain()
 		blockchain = BlockStructs.Start()
 	}
-	blockchain.NewBlock(nil)
-	Interface.Run(blockchain)
+	//apitest
+	//blockchain.NewBlock(nil,blockchain.Authorities[0])
+	//Interface.Run(blockchain)
+	Read.Sync(blockchain)
+	api.ApiRun(blockchain)
+
 	//----------------SAVE-------------
 	//time.Sleep(1 * time.Second)
 	err2 := Read.SaveToFile("ledger/myBlocks.json",blockchain)
