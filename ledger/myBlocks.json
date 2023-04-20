@@ -9,22 +9,176 @@
    "Magic_No": "0xD9B4BEF9",
    "Blocksize": 80,
    "Transaction_counter": 0,
-   "Transactions": [],
+   "Transactions": null,
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "c01781a47da65e72ee0ee35ac3b101132cff3426f9d95ab68d798dff814ab31f",
+   "HashMerkleRoot": "ec9aa5310b417aa264993fba3935b793f001156a02003afbf4e5e2e1f6ba0cac",
+   "TimeStamp": "Thursday, 20-Apr-23 00:10:20 BST",
+   "BlockID": 1,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+     "ReceiverPublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+     "Amount": 10,
+     "Signature": "NXt63BzE2v8tcn36nGD6Vzs96QNENKVnmJ4QSkxYJ3mBYLwsp4tDqEluq5KW7IoSShECVNInJuoglgra7HxRWA=="
+    }
+   ],
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "28c16ebfd310e04f5092b187a367f002ffc62cdf25b5c0143b83e9785da0f00b",
+   "HashMerkleRoot": "9ce38162d9d1b2350640a37077e4a2fa704f160b80a95257c2c21eb0fcfc2d22",
+   "TimeStamp": "Thursday, 20-Apr-23 00:10:42 BST",
+   "BlockID": 2,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+     "ReceiverPublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+     "Amount": 10,
+     "Signature": "0I2wv/dCPLE3FUS9POS89n2+gEnwFFU+rbW1c4qrBIsCW9Zv7BpfEYvlfNby6FgnoyuUovm2KiQhfivle5Ee+g=="
+    }
+   ],
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "bd5903377ace5ad368470641d8fd01f85b65637fa5257eb964eb997a04ce66a3",
+   "HashMerkleRoot": "0f26e1c98a2b3da52011ac789cb3d9d4ab4689826f3f898ea0cc7f2f78b9803e",
+   "TimeStamp": "Thursday, 20-Apr-23 00:10:47 BST",
+   "BlockID": 3,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+     "ReceiverPublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+     "Amount": 10,
+     "Signature": "YsTnGH+Sk/Mhl8GIQEug/UFfeRZcNFb9QFCZleR48abICtbsbjMpOdVqXncBD5Od656LEex5Ay8lQ6Bazv1CAQ=="
+    }
+   ],
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "9bd4b13aba1c3b08099dd08eedc406023c77de455c5472f08b16d4b0eeb5b5f5",
+   "HashMerkleRoot": "e8ef2de0dc19c3dae5f22e99d64fe68b925a4789dc9ad01c69eb0489bb75fcc8",
+   "TimeStamp": "Thursday, 20-Apr-23 00:10:58 BST",
+   "BlockID": 4,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+     "ReceiverPublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+     "Amount": 10,
+     "Signature": "TdMJ4p5E/j2fqY4pWcgYCDHPLrYFIcQ2CDpXgRfaIA0w5EQqo6DfHsNKPVjmoyp64A2XaX6ylicLX4p0AR76Aw=="
+    }
+   ],
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "b3bc16804ea31cf3be63cb7d939b69b97f0d9bfae99ff2e44a07a54b77c1863c",
+   "HashMerkleRoot": "ba56fab7b2a1e04e7cb39c98c403b054a60b482f7e05dfda1ef8d0a1439e4d2d",
+   "TimeStamp": "Thursday, 20-Apr-23 00:10:59 BST",
+   "BlockID": 5,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 1,
+   "Transactions": [
+    {
+     "SenderPublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
+     "ReceiverPublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
+     "Amount": 10,
+     "Signature": "WjGkLxk0yuWtqIUvxlnvrdEvqu+Mz9Pzv8jNT4aGtF0Fe0FCK+wWFFbjiquFeXxLgqWMdYlhNfSy+jLoh3Bpmg=="
+    }
+   ],
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "8435c5fc7ba54aba7e439092f109b07c6ef0854ea96b0da989cd9b021b6992b0",
+   "HashMerkleRoot": "2f7303224e8cc39c9bf2efa3e55c1e4f281d84a32b5c47eeaa202602f75739c7",
+   "TimeStamp": "Thursday, 20-Apr-23 00:11:03 BST",
+   "BlockID": 6,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": null,
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "25c8cbd4c6dd432e58c2ca320faf71dc787d05e919e8d1dfc18d6b4fe89e53ee",
+   "HashMerkleRoot": "b624f6cfc27a8e9ccaf0d9ab1328a87389c5c6df5c9d159def0a842f36e76623",
+   "TimeStamp": "Thursday, 20-Apr-23 00:11:08 BST",
+   "BlockID": 7,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": null,
+   "nft_transactions": null,
+   "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
+  },
+  {
+   "Version": 1,
+   "HashPrevBlock": "ea74a062115bb30d5524b5f4d6ca328e3c759190665268e0b956c2bec32b8d9f",
+   "HashMerkleRoot": "64d69a14c638a246738f494e2936538bd246c1ead4422ff534f2655e1d2eaed3",
+   "TimeStamp": "Thursday, 20-Apr-23 00:11:10 BST",
+   "BlockID": 8,
+   "Magic_No": "0xF9S834SK",
+   "Blocksize": 80,
+   "Transaction_counter": 0,
+   "Transactions": null,
    "nft_transactions": null,
    "CreatorPubKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM="
   }
  ],
- "BlockCount": 0,
+ "BlockCount": 8,
  "Wallets": [
   {
    "PublicKey": "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=",
    "PrivateKey": "P4kXX2bGQdZXkAf7WuPUehsqqf4kktsJXWeXGSdEdr4=",
-   "Balance": 50
+   "Balance": 0
   },
   {
    "PublicKey": "BOcbcq8c0XYVbCRuQSJCfwEsIW/xy9sjhXf8g67w/BDeFxQrOXPuzjCtJo4LdtvfgmghOKnugKQ6ki7bb+Oam+U=",
    "PrivateKey": "T64iotod7d4re7J/sPC5ZoHqlmJp9TPrGgvok1Npwrc=",
-   "Balance": 100
+   "Balance": 150
+  },
+  {
+   "PublicKey": "BHqA/lJj5f5ALgSm494DBTWhJCi2jhfTsEOjKGPzddgicp1yLS0mPTIrfkkR7Sw/HxaH92nuvijl703AaLZs2/o=",
+   "PrivateKey": "LRKcwOSZA5CcUUAx575T33MeTHbnbLDVKxBl4y9t+T8=",
+   "Balance": 150
+  },
+  {
+   "PublicKey": "BCULo37YniPsi7uSPcYXw94ePyZpXWYuIbpDQWQ72MasOo9yAXoqOJ3S3AoWe9ROczeHJqy762KZb3BrwAoIa9s=",
+   "PrivateKey": "/47si/yMPMfGiVgsX7mw7S6UTTCtt4wW3gQsIbpRTro=",
+   "Balance": 75
+  },
+  {
+   "PublicKey": "BDdhjz4GsEhMPC/IMD69a/vuyE0/GTk+vSlsfwyL9T/2R2bRVBBm94LxTzThUBAQY7UZsqzFu1tPZlUy7Q++xUI=",
+   "PrivateKey": "ohyCnlOkrW0qTVaOmO1bToWkjNySL9v7jZU/u+FM1ss=",
+   "Balance": 10
   }
  ],
  "PendingTransactions": null,
