@@ -1,13 +1,12 @@
 package api
 
 import (
-	"fmt"
+	"encoding/base64"
 	BlockStructs "go-blockchain/blockstructs"
 	Commands "go-blockchain/commands"
 	Read "go-blockchain/read"
 	"log"
 	"net/http"
-	"net/url"
 	"strconv"
 
 	"github.com/gin-contrib/cors"
@@ -51,32 +50,6 @@ func ApiRun(b *BlockStructs.Blockchain) {
 	})
 	//http://localhost:8080/create_wallet?initial_amount=75
 
-	router.GET("/get_balance", func(c *gin.Context) {
-		// Get the private key from the request query parameter
-		privateKeyStr, err := url.QueryUnescape(c.Query("private_key"))
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Error decoding private key URL component"})
-			return
-		}
-		if privateKeyStr == "" {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Private key is required"})
-			return
-		}
-
-		// Call the GetBalanceByPrivateKey function and return the result
-		balance, err := Commands.GetBalanceByPrivateKey(b, privateKeyStr)
-		if err != nil {
-			fmt.Printf("Error getting balance: %v\n", err) // Add this line to log the error
-			c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
-			return
-		}
-		c.JSON(http.StatusOK, gin.H{
-			"balance": balance,
-		})
-	})
-	//http://localhost:8080/get_balance?private_key=T64iotod7d4re7J/sPC5ZoHqlmJp9TPrGgvok1Npwrc=
-	//change PK as needed
-
 	router.GET("/make_transaction", func(c *gin.Context) {
 		// Get the private key, recipient's public key, and amount from the URL query parameters
 		privateKeyStr := c.Query("private_key")
@@ -106,6 +79,79 @@ func ApiRun(b *BlockStructs.Blockchain) {
 
 	// Add other API endpoints for your blockchain commands
 	// ...
+	router.GET("/login", func(c *gin.Context) {
+		// Get the private key from the URL query parameters
+		privateKeyStr := c.Query("private_key")
+
+		// Call the GetBalanceByPrivateKey function with the provided private key
+		balance, publicKeyStr, err := Commands.GetBalanceByPrivateKey(b, privateKeyStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		// Get the list of owned NFTs
+		ownedNFTs, err := Commands.ListOwnedNFTs(b, privateKeyStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			return
+		}
+		// Find the corresponding wallet in the blockchain
+		var wallet *BlockStructs.Wallet
+		for _, w := range b.Wallets {
+			if publicKeyStr == base64.StdEncoding.EncodeToString(w.PublicKey) {
+				wallet = w
+				break
+			}
+		}
+		if wallet == nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Wallet not found"})
+			return
+		}
+
+		// Return the public key, balance, and NFTs
+		c.JSON(http.StatusOK, gin.H{
+			"public_key": publicKeyStr,
+			"balance":    balance,
+			"nfts":       ownedNFTs,
+		})
+	})
+
+	router.GET("/create_nft", func(c *gin.Context) {
+		idStr := c.Query("id")
+		cdKey := c.Query("cd_key")
+		tokenIDStr := c.Query("token_id")
+		creatorPubKey := c.Query("creator_public_key")
+
+		// Convert id and tokenID to uint64
+		id, err := strconv.ParseUint(idStr, 10, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid id"})
+			return
+		}
+
+		tokenID, err := strconv.ParseUint(tokenIDStr, 10, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid token ID"})
+			return
+		}
+
+		nft := &BlockStructs.CDKeyNFT{
+			ID:          id,
+			CDKey:       cdKey,
+			TokenID:     tokenID,
+			Minted:      false,
+			OwnerPubKey: creatorPubKey,
+		}
+
+
+		c.JSON(http.StatusOK, gin.H{
+			"message": "NFT added to pending NFTs",
+			"nft":     nft,
+		})
+	})
+	
+
+
 
 	// Start the API server
 	err := router.Run(":8080")
