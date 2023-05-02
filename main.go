@@ -23,7 +23,8 @@ func main() {
 	//Interface.Run(blockchain)
 	Read.Sync(blockchain)
 	api.ApiRun(blockchain)
-
+	// Start processing pending NFTs
+    //go BlockStructs.ProcessPendingNFTs(blockchain, "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=")
 	//----------------SAVE-------------
 	//time.Sleep(1 * time.Second)
 	err2 := Read.SaveToFile("ledger/myBlocks.json",blockchain)

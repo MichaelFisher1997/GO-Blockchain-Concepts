@@ -1,4 +1,4 @@
-package Commands
+package BlockStructs
 
 import (
 	"crypto/ecdsa"
@@ -7,11 +7,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
-
-	BlockStructs "go-blockchain/blockstructs"
 )
 
-func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
+func ConfirmNFTTransaction(b *Blockchain) {
 	// Get the seller's private key
 	var sellerPrivateKeyStr string
 	fmt.Print("Enter your private key: ")
@@ -33,7 +31,7 @@ func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
 	fmt.Scan(&amount)
 
 	// Find the pending NFT transaction
-	nftTransaction, err := findPendingNFTTransaction(b, nftID, buyerPublicKeyStr, amount)
+	nftTransaction, err := FindPendingNFTTransaction(b, nftID, buyerPublicKeyStr, amount)
 	if err != nil {
 		fmt.Println("Error finding pending NFT transaction:", err)
 		return
@@ -47,7 +45,7 @@ func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
 	}
 
 	// Sign the NFT transaction
-	signature, err := signNFTTransaction(sellerPrivateKey, nftTransaction)
+	signature, err := SignNFTTransaction(sellerPrivateKey, nftTransaction)
 	if err != nil {
 		fmt.Println("Error signing NFT transaction:", err)
 		return
@@ -59,17 +57,17 @@ func ConfirmNFTTransaction(b *BlockStructs.Blockchain) {
 
 
 	// Create a new block with the pending NFT transactions
-	b.NewNFTBlock(b.PendingNFTTransactions, b.Authorities[0])
+	b.NewNFTTrans(b.PendingNFTTransactions, b.Authorities[0])
 
 	// Clear the pending NFT transactions
-	b.PendingNFTTransactions = []*BlockStructs.NFTTransaction{}
+	b.PendingNFTTransactions = []*NFTTransaction{}
 
 	fmt.Println("_______________________________________________________________")
 	fmt.Println("NFT transaction confirmed, signed, and added to the blockchain")
 	fmt.Println("_______________________________________________________________")
 }
 
-func findPendingNFTTransaction(b *BlockStructs.Blockchain, nftID uint64, buyerPublicKeyStr string, amount float64) (*BlockStructs.NFTTransaction, error) {
+func FindPendingNFTTransaction(b *Blockchain, nftID uint64, buyerPublicKeyStr string, amount float64) (*NFTTransaction, error) {
 	for _, tx := range b.PendingNFTTransactions {
 		if tx.NFTID == nftID && tx.ReceiverPubKey == buyerPublicKeyStr && tx.Amount == amount {
 			return tx, nil
@@ -79,7 +77,7 @@ func findPendingNFTTransaction(b *BlockStructs.Blockchain, nftID uint64, buyerPu
 	return nil, errors.New("pending NFT transaction not found")
 }
 
-func signNFTTransaction(sellerPrivateKey []byte, nftTransaction *BlockStructs.NFTTransaction) (string, error) {
+func SignNFTTransaction(sellerPrivateKey []byte, nftTransaction *NFTTransaction) (string, error) {
 	// Create an ECDSA private key from the provided bytes
 	privateKey, err := ecdsa.GenerateKey(elliptic.P256(), rand.Reader)
 	if err != nil {

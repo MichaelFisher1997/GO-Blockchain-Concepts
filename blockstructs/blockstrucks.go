@@ -1,6 +1,7 @@
 package BlockStructs
 
 import (
+	//Commands "go-blockchain/commands"
 	"time"
 )
 
@@ -8,6 +9,7 @@ type Wallet struct {
 	PublicKey  []byte
 	PrivateKey []byte
 	Balance    float64
+	CDKeyNFTs  []CDKeyNFT
 }
 
 type Transaction struct {
@@ -43,6 +45,7 @@ type Blockchain struct {
 	Wallets []*Wallet
 	PendingTransactions []*Transaction
 	PendingNFTTransactions []*NFTTransaction `json:"pending_nft_transactions"`
+	PendingNFTs []*CDKeyNFT
 	NFTs []*CDKeyNFT
 	Authorities          []string
 	//Root  hash //Merkel root
@@ -70,3 +73,12 @@ type Block struct {
 func TimeStamp() string {
 	return time.Now().Format(time.RFC850) //maybe change this to ow.UnixNano() // number of nanoseconds since January 1, 1970 UTC
 }
+/*
+func (b *Blockchain) AddNFTBlock(nftTransactions []*NFTTransaction, creatorPubKey string) error {
+	err := Commands.NewNFTBlock(b, nftTransactions, creatorPubKey)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}*/

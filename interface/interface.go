@@ -80,7 +80,7 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			Commands.MakeWallet(b)
 			Read.Sync(b)
 		}
-		if i == 4 {
+		/*if i == 4 {
 			var privateKeyStr string
 			fmt.Print("Enter your private key: ")
 			fmt.Scan(&privateKeyStr)
@@ -89,8 +89,8 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			fmt.Println("____________________________________________________")
 			fmt.Printf("Balance: %f\n", Balance)
 			fmt.Println("____________________________________________________")
-		}
-		if 5 == i {
+		}*/
+		/*if 5 == i {
 			var id uint64
 			var cdKey string
 			var tokenID uint64
@@ -120,7 +120,7 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			b.NFTs = append(b.NFTs, nft)
 			Read.Sync(b)
 			//W8Q3M-GZ7LS-2D6TY-VK9PX-4H1FA
-		}
+		}*/
 		if 6 == i {
 			var privateKeyStr string
 			fmt.Print("Enter your private key: ")
@@ -141,10 +141,10 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			Commands.CreateNFTTransaction(b)
 			Read.Sync(b)
 		}
-		if 8 == i {
+		/*if 8 == i {
 			Commands.ConfirmNFTTransaction(b)
 			Read.Sync(b)
-		}
+		}*/
 		if 10 == i {
 			var privateKeyStr string
 			fmt.Print("Enter your private key: ")

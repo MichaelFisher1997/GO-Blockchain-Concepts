@@ -9,11 +9,11 @@ import (
 	"math/big"
 )
 
-func GetBalanceByPrivateKey(b *BlockStructs.Blockchain, privateKeyStr string) (float64, error) {
+func GetBalanceByPrivateKey(b *BlockStructs.Blockchain, privateKeyStr string) (float64, string, error) {
 	// Decode the private key
 	privateKeyBytes, err := base64.StdEncoding.DecodeString(privateKeyStr)
 	if err != nil {
-		return 0, fmt.Errorf("Error decoding private key: %v", err)
+		return 0, "", fmt.Errorf("Error decoding private key: %v", err)
 	}
 
 	// Derive the public key from the private key
@@ -40,8 +40,8 @@ func GetBalanceByPrivateKey(b *BlockStructs.Blockchain, privateKeyStr string) (f
 	}
 
 	if wallet == nil {
-		return 0, fmt.Errorf("Wallet not found")
+		return 0, "", fmt.Errorf("Wallet not found")
 	}
 
-	return wallet.Balance, nil
+	return wallet.Balance, publicKeyStr, nil
 }

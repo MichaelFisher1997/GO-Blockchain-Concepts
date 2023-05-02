@@ -37,7 +37,7 @@ func (b *Blockchain) NewBlock(transactions []*Transaction, creatorPubKey string)
 	b.PendingTransactions = []*Transaction{}
 }
 
-func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction, creatorPubKey string) {
+func (b *Blockchain) NewNFTTrans(nftTransactions []*NFTTransaction, creatorPubKey string) {
 	tempBlock := &Block{
         CreatorPubKey: creatorPubKey,
     }
@@ -70,7 +70,7 @@ func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction, creatorPubKe
 				fmt.Println("Error decoding seller's public key:", err)
 				return
 			}
-			sellerWallet := b.findWalletByPublicKey(senderPublicKeyBytes)
+			sellerWallet := b.FindWalletByPublicKey(senderPublicKeyBytes)
 			if sellerWallet != nil {
 				sellerWallet.Balance -= nftTransaction.Amount
 			}
@@ -83,22 +83,23 @@ func (b *Blockchain) NewNFTBlock(nftTransactions []*NFTTransaction, creatorPubKe
 			}
 
 			// Add the amount to the buyer's wallet
-			buyerWallet := b.findWalletByPublicKey(receiverPublicKeyBytes)
+			buyerWallet := b.FindWalletByPublicKey(receiverPublicKeyBytes)
 			if buyerWallet != nil {
 				buyerWallet.Balance += nftTransaction.Amount
 			}
 
 			// Update the NFT's ownership
-			nft := b.findNFTByID(nftTransaction.NFTID)
+			nft := b.FindNFTByID(nftTransaction.NFTID)
 			if nft != nil {
 				nft.OwnerPubKey = nftTransaction.ReceiverPubKey
 			}
 		}
 	}
 	fmt.Println("New NFT block :", block.BlockHash())
+	b.PendingNFTs = append(b.PendingNFTs, b.NFTs...)
 	b.Blocks = append(b.Blocks, block)
 	// Clear the pending NFT transactions after adding them to the new block
-	b.PendingNFTTransactions = []*NFTTransaction{}
+	//b.PendingNFTTransactions = []*NFTTransaction{}
 }
 
 
