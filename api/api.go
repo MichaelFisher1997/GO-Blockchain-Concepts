@@ -19,7 +19,7 @@ func ApiRun(b *BlockStructs.Blockchain) {
 
 	 // Add CORS middleware
 	 router.Use(cors.New(cors.Config{
-        AllowOrigins:     []string{"http://localhost:3000"},
+        AllowOrigins:     []string{"http://localhost:3000", "http://0.0.0.0:3000"},
         AllowMethods:     []string{"POST", "GET", "OPTIONS", "PUT", "DELETE"},
         AllowHeaders:     []string{"Origin", "Content-Type", "Content-Length", "Accept-Encoding", "X-CSRF-Token", "Authorization"},
         ExposeHeaders:    []string{"Content-Length"},
@@ -80,21 +80,30 @@ func ApiRun(b *BlockStructs.Blockchain) {
 	// Add other API endpoints for your blockchain commands
 	// ...
 	router.GET("/login", func(c *gin.Context) {
-		// Get the private key from the URL query parameters
-		privateKeyStr := c.Query("private_key")
+		// Get the URL-encoded private key from the URL query parameters
+		encodedPrivateKeyStr := c.Query("private_key")
+		// URL-decode the private key
+		/*privateKeyStr, err := url.QueryUnescape(encodedPrivateKeyStr)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid private key"})
+			return
+		}*/
+		privateKeyStr := encodedPrivateKeyStr
 
-		// Call the GetBalanceByPrivateKey function with the provided private key
+		// Call the GetBalanceByPrivateKey function with the decoded private key
 		balance, publicKeyStr, err := Commands.GetBalanceByPrivateKey(b, privateKeyStr)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
+
 		// Get the list of owned NFTs
 		ownedNFTs, err := Commands.ListOwnedNFTs(b, privateKeyStr)
 		if err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 			return
 		}
+
 		// Find the corresponding wallet in the blockchain
 		var wallet *BlockStructs.Wallet
 		for _, w := range b.Wallets {
