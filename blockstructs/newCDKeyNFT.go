@@ -3,17 +3,16 @@ package BlockStructs
 import (
 	"encoding/base64"
 	"fmt"
-	//BlockStructs "go-blockchain/blockstructs"
-	//Blockchain "blockchain/blockchain"
+	//Read "go-blockchain/read"
 )
 
-func NewNFTBlock(b *Blockchain, nfts []*CDKeyNFT, creatorPubKey string) error {
-    tempBlock := &Block{
+func (b *Blockchain) NewNFTBlock(nfts []*CDKeyNFT, creatorPubKey string)  []*CDKeyNFT{
+    /*tempBlock := &Block{
         CreatorPubKey: creatorPubKey,
     }
     if !b.IsValidBlock(tempBlock) {
         return fmt.Errorf("error: block creator is not an authorized authority")
-    }
+    }*/
 
     b.BlockCount = b.BlockCount + 1
     fmt.Print(creatorPubKey)
@@ -26,7 +25,7 @@ func NewNFTBlock(b *Blockchain, nfts []*CDKeyNFT, creatorPubKey string) error {
         HashPrevBlock:     b.PrevBlockHash(),
         HashMerkleRoot:    b.MerkelRoot(),
         TimeStamp:         TimeStamp(),
-        Transaction_counter: 0,
+        Transaction_counter: len(b.Blocks),
         NFTTransactions:     []*NFTTransaction{},
         //NFTs:                nfts,
         CreatorPubKey:       creatorPubKey,
@@ -34,8 +33,9 @@ func NewNFTBlock(b *Blockchain, nfts []*CDKeyNFT, creatorPubKey string) error {
 
     b.Blocks = append(b.Blocks, block)
     b.PendingNFTs = append(b.PendingNFTs, nfts...)
-    b.NewBlock(nil, creatorPubKey)
-    return nil
+    b.NewBlock(nil, b.Authorities[0]) //cahnge this to node address
+    //b.Sync(b)
+    return nfts
 }
 
 

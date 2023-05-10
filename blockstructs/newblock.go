@@ -34,7 +34,7 @@ func (b *Blockchain) NewBlock(transactions []*Transaction, creatorPubKey string)
 	fmt.Println("New block :",block.BlockHash())
 	b.Blocks = append(b.Blocks, block)
 	// Clear the pending transactions after adding them to the new block
-	b.PendingTransactions = []*Transaction{}
+	//b.PendingTransactions = []*Transaction{}
 }
 
 func (b *Blockchain) NewNFTTrans(nftTransactions []*NFTTransaction, creatorPubKey string) {

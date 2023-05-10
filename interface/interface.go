@@ -7,7 +7,6 @@ import (
 	"fmt"
 	BlockStructs "go-blockchain/blockstructs"
 	Commands "go-blockchain/commands"
-	Read "go-blockchain/read"
 	Utils "go-blockchain/utils"
 	"math/big"
 )
@@ -15,6 +14,43 @@ import (
 type BlockInterface interface {
     Run()
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 	//login or new wallet
@@ -69,16 +105,16 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 			//b.UpdateBalances()
 			latestBlock := b.Blocks[len(b.Blocks)-1]
 			fmt.Printf("Latest block: %v\n", latestBlock)
-			Read.Sync(b)
+			//Read.Sync(b)
 			
 		}
-		if i == 2 {
+		/*if i == 2 {
 			Commands.MakeTransaction(b)
 			Read.Sync(b)
-		}
+		}*/
 		if i == 3 {
 			Commands.MakeWallet(b)
-			Read.Sync(b)
+			//Read.Sync(b)
 		}
 		/*if i == 4 {
 			var privateKeyStr string
@@ -139,18 +175,18 @@ func Run(b *BlockStructs.Blockchain) *BlockStructs.Blockchain{
 		}
 		if 7 == i {
 			Commands.CreateNFTTransaction(b)
-			Read.Sync(b)
+			//Read.Sync(b)
 		}
 		/*if 8 == i {
 			Commands.ConfirmNFTTransaction(b)
-			Read.Sync(b)
+			//Read.Sync(b)
 		}*/
 		if 10 == i {
 			var privateKeyStr string
 			fmt.Print("Enter your private key: ")
 			fmt.Scanln(&privateKeyStr)
 			BlockStructs.AddToAuthorities(b, privateKeyStr)
-			Read.Sync(b)
+			//Read.Sync(b)
 		}
 		if i == 0 {
 			break

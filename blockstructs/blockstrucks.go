@@ -25,7 +25,7 @@ type CDKeyNFT struct {
     TokenID     uint64 `json:"token_id"`
     Minted      bool   `json:"minted"`
     MintedBy    string `json:"minted_by"`
-    MintedOn    string `json:"minted_on"`
+    MintedOn    string
 	OwnerPubKey string `json:"owner_pub_key"`
 }
 

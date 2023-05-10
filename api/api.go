@@ -2,9 +2,13 @@ package api
 
 import (
 	"encoding/base64"
+	"fmt"
 	BlockStructs "go-blockchain/blockstructs"
 	Commands "go-blockchain/commands"
+
+	//Interface "go-blockchain/interface"
 	Read "go-blockchain/read"
+	Utils "go-blockchain/utils"
 	"log"
 	"net/http"
 	"strconv"
@@ -25,6 +29,20 @@ func ApiRun(b *BlockStructs.Blockchain) {
         ExposeHeaders:    []string{"Content-Length"},
         AllowCredentials: true,
     }))
+
+	//testing routers
+	router.GET("/clear_pending", func(c *gin.Context) {
+		// Clear the pending transactions
+		b.PendingTransactions = []*BlockStructs.Transaction{}
+		b.PendingNFTTransactions = []*BlockStructs.NFTTransaction{}
+		b.PendingNFTs = []*BlockStructs.CDKeyNFT{}
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Pending transactions cleared",
+		})
+		Read.Sync(b)
+	})
+	//end testing routers
+
 
 	router.GET("/create_wallet", func(c *gin.Context) {
 		// Get the initial amount from the request query parameter
@@ -81,15 +99,8 @@ func ApiRun(b *BlockStructs.Blockchain) {
 	// ...
 	router.GET("/login", func(c *gin.Context) {
 		// Get the URL-encoded private key from the URL query parameters
-		encodedPrivateKeyStr := c.Query("private_key")
-		// URL-decode the private key
-		/*privateKeyStr, err := url.QueryUnescape(encodedPrivateKeyStr)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid private key"})
-			return
-		}*/
-		privateKeyStr := encodedPrivateKeyStr
-
+		privateKeyStr := c.Query("private_key")
+		fmt.Print("PK: ", privateKeyStr, "\n")
 		// Call the GetBalanceByPrivateKey function with the decoded private key
 		balance, publicKeyStr, err := Commands.GetBalanceByPrivateKey(b, privateKeyStr)
 		if err != nil {
@@ -125,11 +136,18 @@ func ApiRun(b *BlockStructs.Blockchain) {
 		})
 	})
 
+	//Create NFT
 	router.GET("/create_nft", func(c *gin.Context) {
 		idStr := c.Query("id")
 		cdKey := c.Query("cd_key")
 		tokenIDStr := c.Query("token_id")
-		creatorPubKey := c.Query("creator_public_key")
+		creatorPrivateKey := c.Query("private_key")
+		//
+		//get public key
+		//fmt.Print("PK: ", creatorPrivateKey, "\n")
+		creatorPubKey, err := Utils.DecodePrivateKey(creatorPrivateKey)
+		Utils.Check(err)
+		//fmt.Fprintln(c.Writer, "creatorPubKey: ", creatorPubKey)
 
 		// Convert id and tokenID to uint64
 		id, err := strconv.ParseUint(idStr, 10, 64)
@@ -149,19 +167,21 @@ func ApiRun(b *BlockStructs.Blockchain) {
 			CDKey:       cdKey,
 			TokenID:     tokenID,
 			Minted:      false,
+			MintedBy:   creatorPubKey,
+			MintedOn:   BlockStructs.TimeStamp(),
 			OwnerPubKey: creatorPubKey,
 		}
-
+		// Call NewNFTBlock function
+		New_nft := b.NewNFTBlock([]*BlockStructs.CDKeyNFT{nft}, creatorPubKey)
+		//Utils.Check(New_nft)
 
 		c.JSON(http.StatusOK, gin.H{
 			"message": "NFT added to pending NFTs",
-			"nft":     nft,
+			"nft":     New_nft,
 		})
+		Read.Sync(b)
 	})
 	
-
-
-
 	// Start the API server
 	err := router.Run(":8080")
 	if err != nil {
