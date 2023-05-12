@@ -68,24 +68,3 @@ func (b *Blockchain) GetWallet(publicKey []byte) (*Wallet, error) {
     return nil, errors.New("wallet not found")
 }
 
-
-
-func (b *Blockchain) UpdateBalances() {
-	for _, block := range b.Blocks {
-		for _, tx := range block.Transactions {
-			// Decrease the sender's balance
-			senderWallet, _ := b.GetWallet(tx.SenderPublicKey)
-			if senderWallet != nil {
-				senderWallet.Balance -= tx.Amount
-			}
-
-			// Increase the receiver's balance
-			receiverWallet, _ := b.GetWallet(tx.ReceiverPublicKey)
-			if receiverWallet != nil {
-				receiverWallet.Balance += tx.Amount
-			}
-		}
-	}
-}
-
-

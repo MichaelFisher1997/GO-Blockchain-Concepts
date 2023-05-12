@@ -4,6 +4,7 @@ import (
 	"fmt"
 	BlockStructs "go-blockchain/blockstructs"
 	Utils "go-blockchain/utils"
+	"time"
 )
 
 func Sync(b *BlockStructs.Blockchain) {
@@ -13,4 +14,17 @@ func Sync(b *BlockStructs.Blockchain) {
 	if err := SaveBlockchain(b, "blockchain.dat"); err != nil {
 		fmt.Printf("Error saving blockchain: %v\n", err)
 	}
+}
+
+func StartMining(b  BlockStructs.Blockchain) {
+	ticker := time.NewTicker(10 * time.Second)
+	go func() {
+		for {
+			select {
+			case <-ticker.C:
+				b.Mine()
+				Sync(&b)
+			}
+		}
+	}()
 }

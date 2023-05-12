@@ -3,16 +3,9 @@ package BlockStructs
 import (
 	"encoding/base64"
 	"fmt"
-	//Read "go-blockchain/read"
 )
 
 func (b *Blockchain) NewNFTBlock(nfts []*CDKeyNFT, creatorPubKey string)  []*CDKeyNFT{
-    /*tempBlock := &Block{
-        CreatorPubKey: creatorPubKey,
-    }
-    if !b.IsValidBlock(tempBlock) {
-        return fmt.Errorf("error: block creator is not an authorized authority")
-    }*/
 
     b.BlockCount = b.BlockCount + 1
     fmt.Print(creatorPubKey)
@@ -33,7 +26,7 @@ func (b *Blockchain) NewNFTBlock(nfts []*CDKeyNFT, creatorPubKey string)  []*CDK
 
     b.Blocks = append(b.Blocks, block)
     b.PendingNFTs = append(b.PendingNFTs, nfts...)
-    b.NewBlock(nil, b.Authorities[0]) //cahnge this to node address
+    //b.NewBlock(nil, b.Authorities[0]) //cahnge this to node address
     //b.Sync(b)
     return nfts
 }
@@ -50,21 +43,3 @@ func ConvertToURLSafeBase64(input string) (string, error) {
 	urlSafeBase64 := base64.URLEncoding.EncodeToString(data)
 	return urlSafeBase64, nil
 }
-
-/*func AddNFTBlock(b *BlockStructs.Blockchain, nftTransactions []*BlockStructs.NFTTransaction, creatorPubKey string) error {
-	err := NewNFTBlock(b, creatorPubKey)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}
-
-
-/*
-input number <- : 5
-Enter the ID: 123
-Enter the CD Key: AB12-CD34-EF56-GH78
-Enter the Token ID: 1001
-Enter your private key: WgFXmDQZ8aHtGmRjI9X9trLmPp8WxjKq1cbrDtI7Npk=
-*/

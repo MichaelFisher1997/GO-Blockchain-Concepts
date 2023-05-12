@@ -22,20 +22,3 @@ func (b *Blockchain) FindNFTByID(nftID uint64) *CDKeyNFT {
 	}
 	return nil
 }
-
-/*func ProcessPendingNFTs(b *Blockchain, creatorPubKey string) {
-    for {
-        time.Sleep(1 * time.Second)
-
-        if len(b.PendingNFTs) > 0 {
-            // Create a new block with the pending NFTs
-            err := NewNFTBlock(b.PendingNFTs, creatorPubKey)
-            if err != nil {
-                log.Printf("Error creating NFT block: %v", err)
-            } else {
-                // Clear the pending NFTs after creating the new block
-                b.PendingNFTs = []*CDKeyNFT{}
-            }
-        }
-    }
-}*/

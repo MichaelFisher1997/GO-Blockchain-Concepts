@@ -21,15 +21,6 @@ func main() {
 	//apitest
 	//blockchain.NewBlock(nil,blockchain.Authorities[0])
 	Read.Sync(blockchain)
+	Read.StartMining(*blockchain)
 	api.ApiRun(blockchain)
-	// Start processing pending NFTs
-    //go BlockStructs.ProcessPendingNFTs(blockchain, "BCTiyl5yXg9VdtDhKgXU9O3IkhOsLimlDcWKemp3XoI6f5PyQM6GVm/+t+FZf0mvLgDrZhfDcuZpaPj1ieFuKgM=")
-	//----------------SAVE-------------
-	//time.Sleep(1 * time.Second)
-	/*err2 := Read.SaveToFile("ledger/myBlocks.json",blockchain)
-	Utils.Check(err2)
-	// Save the current state of the blockchain to a binary file.
-	if err := Read.SaveBlockchain(blockchain, "blockchain.dat"); err != nil {
-		fmt.Printf("Error saving blockchain: %v\n", err)
-	}*/
 }

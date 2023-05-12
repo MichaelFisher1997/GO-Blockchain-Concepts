@@ -22,7 +22,7 @@ type Transaction struct {
 type CDKeyNFT struct {
     ID          uint64 `json:"id"`
     CDKey       string `json:"cd_key"`
-    TokenID     uint64 `json:"token_id"`
+    TokenID     string `json:"token_id"`
     Minted      bool   `json:"minted"`
     MintedBy    string `json:"minted_by"`
     MintedOn    string
@@ -32,11 +32,12 @@ type CDKeyNFT struct {
 type NFTTransaction struct {
 	ID             uint64 `json:"id"`
 	NFTID          uint64 `json:"nft_id"`
-	SenderPubKey   string `json:"sender_pub_key"`
+	OwnerPubKey   string `json:"owner_pub_key"`
 	ReceiverPubKey string `json:"receiver_pub_key"`
 	Amount         float64 `json:"amount"`
 	Signature      string `json:"signature"`
 	Confirmed      bool   `json:"confirmed"`
+	TimeStamp	  string `json:"time_stamp"`
 }
 
 type Blockchain struct {
@@ -48,7 +49,7 @@ type Blockchain struct {
 	PendingNFTs []*CDKeyNFT
 	NFTs []*CDKeyNFT
 	Authorities          []string
-	//Root  hash //Merkel root
+	//Root  string //Merkel root
 	//root needs to loop through all the blocks and hash them all into a merkel root
 }
 
@@ -69,16 +70,13 @@ type Block struct {
 
 }
 
-// fmt.Println(t.Format("20060102150405"))
+type NFT_Adds struct {
+	ID             uint64 `json:"id"` //Transaction ID
+	TokenID     string `json:"token_id"`
+	Time 		 string `json:"time"`
+	Price 		float64 `json:"price"`
+}
+
 func TimeStamp() string {
 	return time.Now().Format(time.RFC850) //maybe change this to ow.UnixNano() // number of nanoseconds since January 1, 1970 UTC
 }
-/*
-func (b *Blockchain) AddNFTBlock(nftTransactions []*NFTTransaction, creatorPubKey string) error {
-	err := Commands.NewNFTBlock(b, nftTransactions, creatorPubKey)
-	if err != nil {
-		return err
-	}
-
-	return nil
-}*/

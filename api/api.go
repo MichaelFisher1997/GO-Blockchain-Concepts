@@ -41,6 +41,15 @@ func ApiRun(b *BlockStructs.Blockchain) {
 		})
 		Read.Sync(b)
 	})
+
+	router.GET("/mine", func(c *gin.Context) {
+		// Create a new block with the pending transactions
+		b.Mine()
+		c.JSON(http.StatusOK, gin.H{
+			"message": "New block successfully mined",
+		})
+		Read.Sync(b)
+	})
 	//end testing routers
 
 
@@ -109,11 +118,8 @@ func ApiRun(b *BlockStructs.Blockchain) {
 		}
 
 		// Get the list of owned NFTs
-		ownedNFTs, err := Commands.ListOwnedNFTs(b, privateKeyStr)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
-			return
-		}
+		ownedNFTs:= Commands.ListOwnedNFTs(b, privateKeyStr)
+		Utils.Check(err)
 
 		// Find the corresponding wallet in the blockchain
 		var wallet *BlockStructs.Wallet
@@ -156,16 +162,10 @@ func ApiRun(b *BlockStructs.Blockchain) {
 			return
 		}
 
-		tokenID, err := strconv.ParseUint(tokenIDStr, 10, 64)
-		if err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid token ID"})
-			return
-		}
-
 		nft := &BlockStructs.CDKeyNFT{
 			ID:          id,
 			CDKey:       cdKey,
-			TokenID:     tokenID,
+			TokenID:     tokenIDStr,
 			Minted:      false,
 			MintedBy:   creatorPubKey,
 			MintedOn:   BlockStructs.TimeStamp(),
@@ -181,6 +181,76 @@ func ApiRun(b *BlockStructs.Blockchain) {
 		})
 		Read.Sync(b)
 	})
+	//----------test freom down-------
+	router.GET("/make_nft_transaction", func(c *gin.Context) {
+		// Get the private key, recipient's public key, and amount from the URL query parameters
+		nftIDStr := c.Query("nft_id")
+		amountStr := c.Query("amount")
+		privateKeyStr := c.Query("private_key")
+
+		// Convert the amount string to float64
+		amount, err := strconv.ParseFloat(amountStr, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid amount"})
+			return
+		}
+
+		// Convert the nftID string to uint64
+		nftID, err := strconv.ParseUint(nftIDStr, 10, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid nft_id"})
+			return
+		}
+
+		// Call the MakeTransaction function with the provided data
+		err = b.PendingNFTTransaction(privateKeyStr, nftID, amount)
+		Utils.Check(err)
+
+		c.JSON(http.StatusOK, gin.H{
+			"message": "NFT transaction successfully created and added to the pending transactions",
+		})
+		Read.Sync(b)
+	})
+
+	//List NFT adds
+	router.GET("/list_nft_adds", func(c *gin.Context) {
+		adds := b.AllPendingNFTTransactions()
+		c.JSON(http.StatusOK, gin.H{
+			"adds": adds,
+		})
+	})
+
+	//buy NFT
+	router.GET("/buy_nft", func(c *gin.Context) {
+		// Get the private key, recipient's public key, and amount from the URL query parameters
+		nftIDStr := c.Query("nft_id")
+		amountStr := c.Query("amount")
+		privateKeyStr := c.Query("private_key")
+
+		// Convert the amount string to float64
+		amount, err := strconv.ParseFloat(amountStr, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid amount"})
+			return
+		}
+
+		// Convert the nftID string to uint64
+		nftID, err := strconv.ParseUint(nftIDStr, 10, 64)
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid nft_id"})
+			return
+		}
+
+		// Call the MakeTransaction function with the provided data
+		err = b.BuyNFT(nftID, privateKeyStr, amount)
+		Utils.Check(err)
+
+		c.JSON(http.StatusOK, gin.H{
+			"message": "NFT transaction successfully created and added to the pending transactions",
+		})
+		Read.Sync(b)
+	})
+
 	
 	// Start the API server
 	err := router.Run(":8080")
